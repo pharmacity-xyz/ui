@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import Link from 'next/link'
 import { IReturnGetCategories } from '../../services/category/types'
+import ListboxComponent from '../Listbox'
 
 type Props = {
   children: ReactNode
@@ -8,7 +9,27 @@ type Props = {
   setSearchWord: (searchWord: string) => void
   searchProducts: () => void
   searchProductsByCategory: (categoryId: string) => void
+  handleSelectSort: (option) => void
 }
+
+const options = [
+  {
+    id: 0,
+    name: 'Default',
+  },
+  {
+    id: 1,
+    name: 'Featured',
+  },
+  {
+    id: 2,
+    name: 'Price: Low to High',
+  },
+  {
+    id: 3,
+    name: 'Price: High to Low',
+  },
+]
 
 const ShopLayout = ({
   children,
@@ -16,12 +37,15 @@ const ShopLayout = ({
   setSearchWord,
   searchProducts,
   searchProductsByCategory,
+  handleSelectSort,
 }: Props) => {
+  const [selected, setSelected] = useState(options[0])
+
   return (
     <div className="flex w-full h-screen">
       <div className="w-1/4 bg-[#52BA2D] shadow flex-col justify-between hidden sm:flex">
         <div className="px-8">
-          <div className="relative mt-10 rounded-md shadow-sm">
+          <div className="relative mt-10 mb-5 rounded-md shadow-sm">
             <div
               className="flex items-center justify-between gap-2"
               id="store-nav-content"
@@ -46,12 +70,16 @@ const ShopLayout = ({
               </svg>
             </div>
           </div>
+          <ListboxComponent
+            selected={selected}
+            setSelected={setSelected}
+            options={options}
+            handleSelectSort={handleSelectSort}
+          />
           <div className="h-16 w-full flex items-center">
-            <Link href="/">
-              <span className="font-semibold text-xl tracking-tight cursor-pointer text-white">
-                Categories
-              </span>
-            </Link>
+            <span className="font-semibold text-xl tracking-tight cursor-pointer text-white">
+              Categories
+            </span>
           </div>
           <div className="gap-4">
             {categories.map((category) => (
@@ -66,7 +94,7 @@ const ShopLayout = ({
           </div>
         </div>
       </div>
-      <div className="h-64 w-3/4 px-6">{children}</div>
+      <div className="h-64 w-3/4 px-6 flex flex-wrap">{children}</div>
     </div>
   )
 }

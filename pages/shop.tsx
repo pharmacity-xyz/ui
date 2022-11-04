@@ -59,11 +59,59 @@ const Shop = () => {
     try {
       setLoading(true)
       const res = await getProductsByCategoryApi(categoryId)
-      console.log(res)
+      setProducts(res.data)
       setLoading(false)
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const handleSelectSort = (option) => {
+    switch (option.id) {
+      case 1: {
+        sortByFeatured()
+        break
+      }
+      case 2: {
+        sortByLowToHigh()
+        break
+      }
+      case 3: {
+        sortByHighToLow()
+        break
+      }
+      default:
+        fetchAllProducts()
+        break
+    }
+  }
+
+  const sortByFeatured = () => {
+    let featuredProducts: Array<IReturnProducts> = []
+    products.map((product) => {
+      if (product.featured) {
+        featuredProducts.push(product)
+      }
+    })
+    setProducts(featuredProducts)
+  }
+
+  const sortByLowToHigh = async () => {
+    setLoading(true)
+    const res = await getAllProductsApi()
+    let sortedProducts: Array<IReturnProducts> = res.data.sort(
+      (a, b) => a.price - b.price
+    )
+    setProducts(sortedProducts)
+    setLoading(false)
+  }
+
+  const sortByHighToLow = async () => {
+    const res = await getAllProductsApi()
+    let sortedProducts: Array<IReturnProducts> = res.data.sort(
+      (a, b) => b.price - a.price
+    )
+    setProducts(sortedProducts)
   }
 
   useEffect(() => {
@@ -81,6 +129,7 @@ const Shop = () => {
               setSearchWord={setSearchWord}
               searchProducts={searchProducts}
               searchProductsByCategory={searchProductsByCategory}
+              handleSelectSort={handleSelectSort}
             >
               {loading ? (
                 <div className="w-full h-44 flex justify-center items-center">
@@ -112,7 +161,9 @@ const Shop = () => {
                                 />
                               )}
                               <div className="pt-3 flex items-center justify-between">
-                                <p className="">{product.productName}</p>
+                                <p className="w-4/5 text-ellipsis whitespace-nowrap overflow-hidden">
+                                  {product.productName}
+                                </p>
                                 <svg
                                   className="h-6 w-6 fill-current text-gray-500 hover:text-black"
                                   xmlns="http://www.w3.org/2000/svg"
