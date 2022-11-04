@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsInfoCircle } from 'react-icons/bs'
@@ -10,6 +9,7 @@ import doctorImg from '../public/images/doctor.png'
 import productList from '../datas/productList.json'
 import { HomeSlider, FeaturedProductsSlider } from '../components/Slider'
 import Layout from '../components/Layout'
+import { useEffect, useState } from 'react'
 
 const covid19Rows = [
   {
@@ -30,6 +30,12 @@ const covid19Rows = [
 ]
 
 const Home: NextPage = () => {
+  const [userId, setUserId] = useState<string | null>(null)
+
+  useEffect(() => {
+    setUserId(localStorage.getItem('userId'))
+  }, [])
+
   return (
     <Layout title="Home">
       <div className="">
@@ -94,18 +100,22 @@ const Home: NextPage = () => {
         </div>
         <FeaturedProductsSlider />
       </div>
-      <div className="bg-green-500 text-white text-center py-4 mt-5">
-        <h1 className="w-full text-3xl">Sign up for discount up to 50 % OFF</h1>
-        <p className="w-full py-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laborum
-          voluptates excepturi neque labore
-        </p>
-        <Link href="/register">
-          <button className="border border-white px-5 py-1 rounded-md">
-            SIGN UP
-          </button>
-        </Link>
-      </div>
+      {userId === null && (
+        <div className="bg-green-500 text-white text-center py-4 mt-5">
+          <h1 className="w-full text-3xl">
+            Sign up for discount up to 50 % OFF
+          </h1>
+          <p className="w-full py-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+            laborum voluptates excepturi neque labore
+          </p>
+          <Link href="/register">
+            <button className="border border-white px-5 py-1 rounded-md">
+              SIGN UP
+            </button>
+          </Link>
+        </div>
+      )}
     </Layout>
   )
 }
