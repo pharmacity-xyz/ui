@@ -144,7 +144,11 @@ const ProductManagement = () => {
                                   className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                   scope="row"
                                 >
-                                  {product.featured}
+                                  {product.featured ? (
+                                    <h1>true</h1>
+                                  ) : (
+                                    <h1>false</h1>
+                                  )}
                                 </th>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
                                   <button
