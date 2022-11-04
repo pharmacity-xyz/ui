@@ -66,6 +66,16 @@ const Shop = () => {
     }
   }
 
+  const sortByFeatured = () => {
+    const featuredProducts: Array<IReturnProducts> = []
+    products.map((product) => {
+      if (product.featured) {
+        featuredProducts.push(product)
+      }
+    })
+    setProducts(featuredProducts)
+  }
+
   useEffect(() => {
     fetchAllProducts()
     fetchAllCategories()

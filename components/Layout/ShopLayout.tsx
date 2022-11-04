@@ -13,6 +13,10 @@ type Props = {
 
 const options = [
   {
+    id: 0,
+    name: 'Choose',
+  },
+  {
     id: 1,
     name: 'Featured',
   },
