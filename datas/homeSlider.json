@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sku_1",
+    "name": "BIODERMA",
+    "image": "/images/bg_1.jpg"
+  },
+  {
+    "id": "sku_2",
+    "name": "BIODERMA",
+    "image": "/images/bg_2.jpg"
+  },
+  {
+    "id": "sku_3",
+    "name": "BIODERMA",
+    "image": "/images/bg_3.jpg"
+  },
+  {
+    "id": "sku_4",
+    "name": "BIODERMA",
+    "image": "/images/bg_4.jpg"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "image": "/images/product_01.png",
+    "name": "Umcka Cold Care",
+    "price": 120.0,
+    "link": "/product/1"
+  },
+  {
+    "id": 2,
+    "image": "/images/product_02.png",
+    "name": "Umcka Cold Care",
+    "price": 100.0,
+    "link": "/product/2"
+  },
+  {
+    "id": 3,
+    "image": "/images/product_03.png",
+    "name": "Umcka Cold Care",
+    "price": 200.0,
+    "link": "/product/3"
+  },
+  {
+    "id": 4,
+    "image": "/images/product_04.png",
+    "name": "Umcka Cold Care",
+    "price": 250.0,
+    "link": "/product/1"
+  },
+  {
+    "id": 5,
+    "image": "/images/product_05.png",
+    "name": "Umcka Cold Care",
+    "price": 120.0,
+    "link": "/product/1"
+  }
+]

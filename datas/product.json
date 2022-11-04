@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sku_1",
+    "name": "BIODERMA",
+    "category": 1,
+    "price": 240.0,
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.",
+    "image": "/images/product_01.png",
+    "isFeatured": true,
+    "currency": "USD"
+  },
+  {
+    "id": "sku_2",
+    "name": "Chanca Pedra",
+    "category": 2,
+    "price": 120.0,
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.",
+    "image": "/images/product_02.png",
+    "isFeatured": true,
+    "currency": "USD"
+  },
+  {
+    "id": "sku_3",
+    "name": "Umcka Coldcare",
+    "category": 3,
+    "price": 300.0,
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.",
+    "image": "/images/product_03.png",
+    "isFeatured": true,
+    "currency": "USD"
+  },
+  {
+    "id": "sku_4",
+    "name": "Umcka Coldcare",
+    "category": 3,
+    "price": 300.0,
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.",
+    "image": "/images/product_03.png",
+    "isFeatured": true,
+    "currency": "USD"
+  }
+]

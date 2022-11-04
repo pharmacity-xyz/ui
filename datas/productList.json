@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Centrifuge",
+    "img": "/images/centrifuge.jpg",
+    "link": "/"
+  },
+  {
+    "id": 2,
+    "name": "Microscope",
+    "img": "/images/microscope.jpg",
+    "link": "/"
+  },
+  {
+    "id": 3,
+    "name": "Incubator",
+    "img": "/images/incubator.jpg",
+    "link": "/"
+  },
+  {
+    "id": 4,
+    "name": "MRI",
+    "img": "/images/Mri.jpg",
+    "link": "/"
+  },
+  {
+    "id": 5,
+    "name": "ECG_machine",
+    "img": "/images/ecg_machine.jpg",
+    "link": "/"
+  },
+  {
+    "id": 6,
+    "name": "Sale",
+    "img": "/images/sale.png",
+    "link": "/"
+  }
+]
