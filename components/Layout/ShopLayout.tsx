@@ -16,8 +16,8 @@ const ShopLayout = ({
   searchProducts,
 }: Props) => {
   return (
-    <div className="flex w-full">
-      <div className="w-1/3 absolute bg-[#52BA2D] shadow flex-col justify-between hidden sm:flex">
+    <div className="flex w-full h-screen">
+      <div className="w-1/4 bg-[#52BA2D] shadow flex-col justify-between hidden sm:flex">
         <div className="px-8">
           {/* <div className="flex items-center" id="store-nav-content">
             <input
@@ -49,6 +49,7 @@ const ShopLayout = ({
                 id="price"
                 className="block w-full rounded-md border-gray-300 pl-2 py-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Search"
+                onChange={(e) => setSearchWord(e.target.value)}
               />
               <svg
                 className="fill-current hover:text-black cursor-pointer text-black"
@@ -81,9 +82,7 @@ const ShopLayout = ({
           </div>
         </div>
       </div>
-      <div className="h-64 w-2/3 px-6">
-        {children}
-      </div>
+      <div className="h-64 w-3/4 px-6">{children}</div>
     </div>
   )
 }
