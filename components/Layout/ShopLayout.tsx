@@ -15,7 +15,7 @@ type Props = {
 const options = [
   {
     id: 0,
-    name: 'Choose',
+    name: 'Default',
   },
   {
     id: 1,
@@ -94,7 +94,7 @@ const ShopLayout = ({
           </div>
         </div>
       </div>
-      <div className="h-64 w-3/4 px-6 flex">{children}</div>
+      <div className="h-64 w-3/4 px-6 flex flex-wrap">{children}</div>
     </div>
   )
 }
