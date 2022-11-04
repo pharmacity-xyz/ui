@@ -10,7 +10,7 @@ export default function Dropdown() {
   const { logout } = useAuth()
 
   return (
-    <div className="inline-flex bg-white border rounded-md">
+    <div className="inline-flex bg-white rounded-md">
       <div className="relative">
         <button
           type="button"

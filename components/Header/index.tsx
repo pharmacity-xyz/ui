@@ -22,7 +22,7 @@ export const Header = () => {
     <nav className="flex items-center justify-between flex-wrap dark:bg-gray-900 p-6 sticky top-0 z-50">
       <div className="flex items-center flex-shrink-0 text-black mr-6">
         <svg
-          className="fill-current h-8 w-8 mr-2"
+          className="fill-current h-8 w-8 mr-2 text-white"
           width="54"
           height="54"
           viewBox="0 0 54 54"
@@ -61,11 +61,11 @@ export const Header = () => {
           ) : (
             <>
               <Dropdown />
-              <div className="">
+              <div className="bg-white rounded-md">
                 <Link href="/cart">
-                  <a className="flex text-sm px-4 py-2 leading-none border rounded text-black border-black mt-4 lg:mt-0">
+                  <a className="flex text-sm px-4 py-2 leading-none rounded text-black border-black mt-4 lg:mt-0">
                     <BsCart4 />
-                    Cart {Object.values(cartDetails ?? {}).length}
+                    Cart
                   </a>
                 </Link>
               </div>
