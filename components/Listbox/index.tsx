@@ -11,15 +11,27 @@ type Props = {
   options: Array<IOptions>
   selected: IOptions
   setSelected: Dispatch<SetStateAction<{ id: number; name: string }>>
+  handleSelectSort: (option) => void
 }
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const ListboxComponent = ({ options, selected, setSelected }: Props) => {
+const ListboxComponent = ({
+  options,
+  selected,
+  setSelected,
+  handleSelectSort,
+}: Props) => {
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox
+      value={selected}
+      onChange={(option) => {
+        handleSelectSort(option)
+        setSelected(option)
+      }}
+    >
       {({ open }) => (
         <>
           <Listbox.Label className="block text-sm font-medium text-gray-700">

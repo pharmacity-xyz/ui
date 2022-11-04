@@ -9,6 +9,7 @@ type Props = {
   setSearchWord: (searchWord: string) => void
   searchProducts: () => void
   searchProductsByCategory: (categoryId: string) => void
+  handleSelectSort: (option) => void
 }
 
 const options = [
@@ -36,6 +37,7 @@ const ShopLayout = ({
   setSearchWord,
   searchProducts,
   searchProductsByCategory,
+  handleSelectSort,
 }: Props) => {
   const [selected, setSelected] = useState(options[0])
 
@@ -72,6 +74,7 @@ const ShopLayout = ({
             selected={selected}
             setSelected={setSelected}
             options={options}
+            handleSelectSort={handleSelectSort}
           />
           <div className="h-16 w-full flex items-center">
             <span className="font-semibold text-xl tracking-tight cursor-pointer text-white">
@@ -91,7 +94,7 @@ const ShopLayout = ({
           </div>
         </div>
       </div>
-      <div className="h-64 w-3/4 px-6">{children}</div>
+      <div className="h-64 w-3/4 px-6 flex">{children}</div>
     </div>
   )
 }
