@@ -9,7 +9,10 @@ import {
   getAllCategoriesApi,
   updateCategoryApi,
 } from '../../../services/category/categoryServices'
-import { getAllProductsApi } from '../../../services/product/productServices'
+import {
+  deleteProductApi,
+  getAllProductsApi,
+} from '../../../services/product/productServices'
 import { IReturnProducts } from '../../../services/product/types'
 
 const ProductManagement = () => {
@@ -41,14 +44,14 @@ const ProductManagement = () => {
     }
   }
 
-  const handleDeleteProduct = async (categoryId: string) => {
+  const handleDeleteProduct = async (productId: string) => {
     try {
       let token = localStorage.getItem('token')
       const config: AxiosRequestConfig = {
         headers: { Authorization: `Bearer ${token}` },
       }
-      const res = await deleteCategoryApi(categoryId, config)
-      setProducts(res.data)
+      await deleteProductApi(productId, config)
+      fetchAllProducts()
     } catch (error) {
       console.error(error)
     }

@@ -44,6 +44,6 @@ export const updateProductApi = (data) => {
   return axios.put(END_POINTS.UPDATE, data)
 }
 
-export const deleteProductApi = (id) => {
-  return axios.delete(`${END_POINTS.DELETE}/${id}`)
+export const deleteProductApi = (id, config: AxiosRequestConfig) => {
+  return axios.delete(`${END_POINTS.DELETE}/${id}`, config)
 }
