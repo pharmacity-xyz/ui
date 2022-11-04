@@ -8,6 +8,7 @@ import { IReturnGetCategories } from '../services/category/types'
 import { IReturnProducts } from '../services/product/types'
 import {
   getAllProductsApi,
+  getProductsByCategoryApi,
   searchProductsApi,
 } from '../services/product/productServices'
 import Spinner from '../components/Spinner'
@@ -17,12 +18,15 @@ const Shop = () => {
   const [categories, setCategories] = useState<Array<IReturnGetCategories>>([])
   const [products, setProducts] = useState<Array<IReturnProducts>>([])
   const [searchWord, setSearchWord] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('')
   const [loading, setLoading] = useState(false)
 
   const fetchAllCategories = async () => {
     try {
+      setLoading(true)
       const res = await getAllCategoriesApi()
       setCategories(res.data)
+      setLoading(false)
     } catch (error) {
       console.error(error)
     }
@@ -52,6 +56,17 @@ const Shop = () => {
     }
   }
 
+  const searchProductsByCategory = async (categoryId: string) => {
+    try {
+      setLoading(true)
+      const res = await getProductsByCategoryApi(categoryId)
+      console.log(res)
+      setLoading(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
     fetchAllProducts()
     fetchAllCategories()
@@ -66,6 +81,7 @@ const Shop = () => {
               categories={categories}
               setSearchWord={setSearchWord}
               searchProducts={searchProducts}
+              searchProductsByCategory={searchProductsByCategory}
             >
               {loading ? (
                 <div className="w-full h-44 flex justify-center items-center">

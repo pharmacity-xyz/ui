@@ -7,6 +7,7 @@ type Props = {
   categories: Array<IReturnGetCategories>
   setSearchWord: (searchWord: string) => void
   searchProducts: () => void
+  searchProductsByCategory: (categoryId: string) => void
 }
 
 const ShopLayout = ({
@@ -14,6 +15,7 @@ const ShopLayout = ({
   categories,
   setSearchWord,
   searchProducts,
+  searchProductsByCategory,
 }: Props) => {
   return (
     <div className="flex w-full h-screen">
@@ -56,6 +58,7 @@ const ShopLayout = ({
               <button
                 key={category.categoryId}
                 className="mx-3 px-3 h-8 rounded-md border-black"
+                onClick={() => searchProductsByCategory(category.categoryId)}
               >
                 {category.name}
               </button>
