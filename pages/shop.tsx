@@ -8,9 +8,11 @@ import { IReturnGetCategories } from '../services/category/types'
 import { IReturnProducts } from '../services/product/types'
 import {
   getAllProductsApi,
+  getProductsByCategoryApi,
   searchProductsApi,
 } from '../services/product/productServices'
 import Spinner from '../components/Spinner'
+import ShopLayout from '../components/Layout/ShopLayout'
 
 const Shop = () => {
   const [categories, setCategories] = useState<Array<IReturnGetCategories>>([])
@@ -20,8 +22,10 @@ const Shop = () => {
 
   const fetchAllCategories = async () => {
     try {
+      setLoading(true)
       const res = await getAllCategoriesApi()
       setCategories(res.data)
+      setLoading(false)
     } catch (error) {
       console.error(error)
     }
@@ -39,8 +43,23 @@ const Shop = () => {
   const searchProducts = async () => {
     try {
       setLoading(true)
-      const res = await searchProductsApi(searchWord)
-      setProducts(res.data.products)
+      if (searchWord === '') {
+        fetchAllProducts()
+      } else {
+        const res = await searchProductsApi(searchWord)
+        setProducts(res.data.products)
+      }
+      setLoading(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const searchProductsByCategory = async (categoryId: string) => {
+    try {
+      setLoading(true)
+      const res = await getProductsByCategoryApi(categoryId)
+      console.log(res)
       setLoading(false)
     } catch (error) {
       console.error(error)
@@ -48,9 +67,6 @@ const Shop = () => {
   }
 
   useEffect(() => {
-    // if (searchWord === '') {
-    //   fetchAllProducts()
-    // }
     fetchAllProducts()
     fetchAllCategories()
   }, [])
@@ -59,47 +75,13 @@ const Shop = () => {
     <>
       <Layout title="Shop">
         <div className="">
-          <section className="bg-white py-8">
-            <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
-              <nav
-                id="store"
-                className="w-full z-30 top-0 px-6 py-1 bg-[#52BA2D]"
-              >
-                <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-                  <h1 className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
-                    Categories:
-                  </h1>
-                  <div className="gap-4">
-                    {categories.map((category) => (
-                      <button
-                        key={category.categoryId}
-                        className="mx-3 px-3 h-8 border rounded-md border-black"
-                      >
-                        {category.name}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="flex items-center" id="store-nav-content">
-                    <input
-                      type="text"
-                      autoFocus={false}
-                      placeholder="Search"
-                      className="text-black bg-[#52BA2D] border-b-2 border-black placeholder-slate-700"
-                      onChange={(e) => setSearchWord(e.target.value)}
-                    />
-                    <svg
-                      className="fill-current hover:text-black cursor-pointer"
-                      onClick={() => searchProducts()}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
-                    </svg>
-                  </div>
-                </div>
-              </nav>
+          <section className="bg-white">
+            <ShopLayout
+              categories={categories}
+              setSearchWord={setSearchWord}
+              searchProducts={searchProducts}
+              searchProductsByCategory={searchProductsByCategory}
+            >
               {loading ? (
                 <div className="w-full h-44 flex justify-center items-center">
                   <Spinner />
@@ -119,9 +101,9 @@ const Shop = () => {
                               query: { id: product.productId },
                             }}
                           >
-                            <div>
+                            <>
                               {product.imageUrl && (
-                                <img
+                                <Image
                                   src={product.imageUrl}
                                   alt={product.productName}
                                   width={300}
@@ -142,7 +124,7 @@ const Shop = () => {
                               <p className="pt-1 text-gray-900">
                                 ${product.price}
                               </p>
-                            </div>
+                            </>
                           </Link>
                         </div>
                       ))}
@@ -152,7 +134,7 @@ const Shop = () => {
                   )}
                 </>
               )}
-            </div>
+            </ShopLayout>
           </section>
         </div>
       </Layout>
