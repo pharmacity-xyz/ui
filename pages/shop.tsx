@@ -59,7 +59,7 @@ const Shop = () => {
     try {
       setLoading(true)
       const res = await getProductsByCategoryApi(categoryId)
-      console.log(res)
+      setProducts(res.data)
       setLoading(false)
     } catch (error) {
       console.error(error)
@@ -81,6 +81,7 @@ const Shop = () => {
         break
       }
       default:
+        fetchAllProducts()
         break
     }
   }
@@ -95,18 +96,21 @@ const Shop = () => {
     setProducts(featuredProducts)
   }
 
-  const sortByLowToHigh = () => {
-    let sortedProducts: Array<IReturnProducts> = products.sort(
+  const sortByLowToHigh = async () => {
+    setLoading(true)
+    const res = await getAllProductsApi()
+    let sortedProducts: Array<IReturnProducts> = res.data.sort(
       (a, b) => a.price - b.price
     )
     setProducts(sortedProducts)
+    setLoading(false)
   }
 
-  const sortByHighToLow = () => {
-    let sortedProducts: Array<IReturnProducts> = products.sort(
+  const sortByHighToLow = async () => {
+    const res = await getAllProductsApi()
+    let sortedProducts: Array<IReturnProducts> = res.data.sort(
       (a, b) => b.price - a.price
     )
-    console.log(sortedProducts)
     setProducts(sortedProducts)
   }
 
