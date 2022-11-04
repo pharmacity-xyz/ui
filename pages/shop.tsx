@@ -63,7 +63,7 @@ const Shop = () => {
             <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
               <nav
                 id="store"
-                className="w-full z-30 top-0 px-6 py-1 bg-[#BA2D2D]"
+                className="w-full z-30 top-0 px-6 py-1 bg-[#52BA2D]"
               >
                 <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
                   <h1 className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
@@ -84,7 +84,7 @@ const Shop = () => {
                       type="text"
                       autoFocus={false}
                       placeholder="Search"
-                      className="text-black bg-[#BA2D2D] border-b-2 border-black"
+                      className="text-black bg-[#52BA2D] border-b-2 border-black placeholder-slate-700"
                       onChange={(e) => setSearchWord(e.target.value)}
                     />
                     <svg

@@ -6,14 +6,10 @@ import AdminLayout from '../../../../components/AdminLayout'
 import { getAllCategoriesApi } from '../../../../services/category/categoryServices'
 import { IReturnGetCategories } from '../../../../services/category/types'
 import {
-  addProductApi,
   getProductByIdApi,
   updateProductApi,
 } from '../../../../services/product/productServices'
-import {
-  IAddProductAPI,
-  IReturnProducts,
-} from '../../../../services/product/types'
+import { IReturnProducts } from '../../../../services/product/types'
 
 const EditProduct = () => {
   const [product, setProduct] = useState({} as IReturnProducts)
