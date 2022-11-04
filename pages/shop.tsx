@@ -18,7 +18,6 @@ const Shop = () => {
   const [categories, setCategories] = useState<Array<IReturnGetCategories>>([])
   const [products, setProducts] = useState<Array<IReturnProducts>>([])
   const [searchWord, setSearchWord] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
   const [loading, setLoading] = useState(false)
 
   const fetchAllCategories = async () => {
