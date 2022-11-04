@@ -154,17 +154,17 @@ const ProductManagement = () => {
                                   )}
                                 </th>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <button
-                                    className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
-                                    onClick={() =>
-                                      handleEditProduct(
-                                        product.productId,
-                                        product.productName
-                                      )
-                                    }
+                                  <Link
+                                    href={{
+                                      pathname: '/admin/product/edit/[id]',
+                                      query: { id: product.productId },
+                                    }}
+                                    key={product.productId}
                                   >
-                                    Edit
-                                  </button>
+                                    <a className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">
+                                      Edit
+                                    </a>
+                                  </Link>
                                 </td>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
                                   <button

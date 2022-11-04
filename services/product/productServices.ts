@@ -40,8 +40,8 @@ export const getFeaturedProducts = () => {
   return axios.get(`${END_POINTS.FEATURED}`)
 }
 
-export const updateProductApi = (data) => {
-  return axios.put(END_POINTS.UPDATE, data)
+export const updateProductApi = (data, config: AxiosRequestConfig) => {
+  return axios.put(END_POINTS.UPDATE, data, config)
 }
 
 export const deleteProductApi = (id, config: AxiosRequestConfig) => {

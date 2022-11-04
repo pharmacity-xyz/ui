@@ -64,10 +64,10 @@ const UserManagement = () => {
                             >
                               Company
                             </th>
-                            <th
+                            {/* <th
                               scope="col"
                               className="text-white rounded-tr-lg text-sm font-medium px-6 py-4"
-                            ></th>
+                            ></th> */}
                           </tr>
                         </thead>
                         <tbody>
@@ -89,14 +89,14 @@ const UserManagement = () => {
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
                                   {user.companyName}
                                 </td>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                                {/* <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
                                   <a
                                     href="#!"
                                     className="font-medium text-gray-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
                                   >
                                     Edit
                                   </a>
-                                </td>
+                                </td> */}
                               </tr>
                             </>
                           ))}

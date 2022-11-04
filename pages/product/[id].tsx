@@ -28,7 +28,6 @@ const ProductDetail: React.FC<Props> = () => {
 
   useEffect(() => {
     const { id } = router.query
-    console.log(id)
     fetchProduct(id as string)
   }, [])
 
