@@ -84,8 +84,8 @@ const Home: NextPage = () => {
           ))}
         </div>
       </div>
-      <div className="">
-        <div className="my-10">
+      <div className="my-10">
+        <div className="my-5">
           <div className="flex justify-between items-center px-8">
             <h2 className="text-3xl">
               <strong className="text-[#75b239]">Featured Products</strong>
