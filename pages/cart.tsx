@@ -17,14 +17,16 @@ import { AxiosRequestConfig } from 'axios'
 import { IReturnCart } from '../services/cart/types'
 import { toast } from 'react-toastify'
 import { checkoutApi } from '../services/checkout/checkoutServices'
+import Spinner from '../components/Spinner'
 
 const Cart = () => {
   const [carts, setCarts] = useState<Array<IReturnCart>>([{} as IReturnCart])
   const [totalPrice, setTotalPrice] = useState(0)
-  // const { user } = useAuth()
+  const [loading, setLoading] = useState(false)
 
   const fetchCarts = async () => {
     try {
+      setLoading(true)
       let token = localStorage.getItem('token')
       const config: AxiosRequestConfig = {
         headers: { Authorization: `Bearer ${token}` },
@@ -40,6 +42,7 @@ const Cart = () => {
       }
 
       setTotalPrice(total)
+      setLoading(false)
     } catch (error) {
       console.error(error)
     }
@@ -117,39 +120,47 @@ const Cart = () => {
           <h1 className="text-2xl">Shopping Cart</h1>
           <p className="text-right">Price</p>
           <hr />
-          {carts.length === 0 && (
-            <h1 className="py-4 text-2xl text-center">Your cart is empty.</h1>
-          )}
-          {carts.map((cart) => (
-            <div className="flex border-b-2 py-4" key={cart.productId}>
-              <div className="w-2/6">
-                {cart.imageUrl && (
-                  <Image
-                    src={cart.imageUrl}
-                    alt={cart.productName}
-                    width={100}
-                    height={100}
-                  />
-                )}
-              </div>
-              <div className="w-3/6 items-center justify-end">
-                <h1 className="mb-4">{cart.productName}</h1>
-                <div className="flex justify-evenly">
-                  <Counter
-                    cart={cart}
-                    handleDecrementItem={handleDecrementItem}
-                    handleIncrementItem={handleIncrementItem}
-                  />
-                  <button onClick={() => deleteCartProduct(cart.productId)}>
-                    <BsTrashFill className="text-2xl text-red-600" />
-                  </button>
+          {loading === true ? (
+            <Spinner />
+          ) : (
+            <>
+              {carts.length === 0 && (
+                <h1 className="py-4 text-2xl text-center">
+                  Your cart is empty.
+                </h1>
+              )}
+              {carts.map((cart) => (
+                <div className="flex border-b-2 py-4" key={cart.productId}>
+                  <div className="w-2/6">
+                    {cart.imageUrl && (
+                      <Image
+                        src={cart.imageUrl}
+                        alt={cart.productName}
+                        width={100}
+                        height={100}
+                      />
+                    )}
+                  </div>
+                  <div className="w-3/6 items-center justify-end">
+                    <h1 className="mb-4">{cart.productName}</h1>
+                    <div className="flex justify-evenly">
+                      <Counter
+                        cart={cart}
+                        handleDecrementItem={handleDecrementItem}
+                        handleIncrementItem={handleIncrementItem}
+                      />
+                      <button onClick={() => deleteCartProduct(cart.productId)}>
+                        <BsTrashFill className="text-2xl text-red-600" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="w-1/6 flex items-center justify-end">
+                    <h1>$ {cart.quantity * cart.price}</h1>
+                  </div>
                 </div>
-              </div>
-              <div className="w-1/6 flex items-center justify-end">
-                <h1>$ {cart.quantity * cart.price}</h1>
-              </div>
-            </div>
-          ))}
+              ))}
+            </>
+          )}
           <h1 className="text-right">
             Subtotal ({carts.length} items): ${totalPrice}
           </h1>
@@ -178,9 +189,6 @@ const Cart = () => {
             <h2 className="text-3xl">
               <strong className="text-[#75b239]">Featured Products</strong>
             </h2>
-            <Link href="/">
-              <a className="hover:underline">See all</a>
-            </Link>
           </div>
           <div className="px-8 py-6">
             <hr />
