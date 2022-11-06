@@ -84,15 +84,12 @@ const Home: NextPage = () => {
           ))}
         </div>
       </div>
-      <div className="">
-        <div className="my-10">
+      <div className="my-10">
+        <div className="my-5">
           <div className="flex justify-between items-center px-8">
             <h2 className="text-3xl">
               <strong className="text-[#75b239]">Featured Products</strong>
             </h2>
-            <Link href="/product">
-              <a className="hover:underline">See all</a>
-            </Link>
           </div>
           <div className="px-8 py-6">
             <hr />

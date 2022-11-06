@@ -140,16 +140,14 @@ const Shop = () => {
                   {products.length > 0 ? (
                     <>
                       {products.map((product) => (
-                        <div
+                        <Link
+                          href={{
+                            pathname: '/product/[id]',
+                            query: { id: product.productId },
+                          }}
                           key={product.productId}
-                          className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col cursor-pointer"
                         >
-                          <Link
-                            href={{
-                              pathname: '/product/[id]',
-                              query: { id: product.productId },
-                            }}
-                          >
+                          <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col cursor-pointer">
                             <>
                               {product.imageUrl && (
                                 <Image
@@ -176,8 +174,8 @@ const Shop = () => {
                                 ${product.price}
                               </p>
                             </>
-                          </Link>
-                        </div>
+                          </div>
+                        </Link>
                       ))}
                     </>
                   ) : (
