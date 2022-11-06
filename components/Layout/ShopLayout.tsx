@@ -94,7 +94,10 @@ const ShopLayout = ({
           </div>
         </div>
       </div>
-      <div className="h-64 w-3/4 px-6 flex flex-wrap">{children}</div>
+      <div className="h-64 w-3/4 px-6 ">
+        <h1 className="py-8 font-bold text-lg">RESULTS</h1>
+        <div className="flex flex-wrap">{children}</div>
+      </div>
     </div>
   )
 }

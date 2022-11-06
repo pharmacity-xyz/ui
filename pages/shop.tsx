@@ -155,7 +155,6 @@ const Shop = () => {
                                   alt={product.productName}
                                   width={300}
                                   height={300}
-                                  className="hover:grow hover:shadow-lg"
                                 />
                               )}
                               <div className="pt-3 flex items-center justify-between">
