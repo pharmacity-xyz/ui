@@ -1,12 +1,10 @@
 import React from 'react'
-import { useShoppingCart } from 'use-shopping-cart'
 
-const Counter = ({ id, quantity }) => {
-  const { incrementItem, decrementItem } = useShoppingCart()
+const Counter = ({ cart, handleIncrementItem, handleDecrementItem }) => {
   return (
     <div>
       <button
-        onClick={() => decrementItem(id)}
+        onClick={() => handleDecrementItem(cart)}
         className="text-[#75b239] border border-[#75b239] p-1 rounded-l-md"
       >
         -
@@ -14,11 +12,11 @@ const Counter = ({ id, quantity }) => {
       <input
         type="number"
         readOnly
-        value={quantity}
+        value={cart.quantity}
         className="border border-gray py-1 w-3/5 text-center"
       />
       <button
-        onClick={() => incrementItem(id)}
+        onClick={() => handleIncrementItem(cart)}
         className="text-[#75b239] border border-[#75b239] p-1 rounded-r-md"
       >
         +

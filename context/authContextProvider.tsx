@@ -34,16 +34,16 @@ export const AuthContextProvider = ({ children }) => {
   const register = async (req: ISignUpApiData) => {
     try {
       if (req.password !== req.confirmPassword) {
-        toast('Password and Confirmpassowrd does not match!')
+        toast.error('Password and Confirmpassowrd does not match!')
         return
       }
 
       await signUpApi(req)
       router.push('/login')
-      toast('Created!')
+      toast.success('Successfully created')
     } catch (error) {
       console.error(error)
-      toast('Failed!')
+      toast.error('Register failed')
     }
   }
 
@@ -74,7 +74,7 @@ export const AuthContextProvider = ({ children }) => {
 
     router.push('/')
     window.location.reload()
-    toast('Logged out!')
+    toast.success('Logged out!')
   }
 
   return (

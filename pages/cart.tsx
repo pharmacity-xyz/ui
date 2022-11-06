@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { useShoppingCart } from 'use-shopping-cart'
 import Counter from '../components/Counter'
 import { BsTrashFill } from 'react-icons/bs'
 
@@ -9,7 +8,11 @@ import { FeaturedProductsSlider } from '../components/Slider'
 import { ICart } from '../types'
 import Layout from '../components/Layout'
 import { useAuth } from '../context/authContextProvider'
-import { deleteCartApi, getCartsApi } from '../services/cart/cartServices'
+import {
+  deleteCartApi,
+  getCartsApi,
+  updateQuantityApi,
+} from '../services/cart/cartServices'
 import { AxiosRequestConfig } from 'axios'
 import { IReturnCart } from '../services/cart/types'
 import { toast } from 'react-toastify'
@@ -32,7 +35,7 @@ const Cart = () => {
       let total = 0
       if (res.data.length > 0) {
         res.data.forEach((cartElement) => {
-          total += cartElement.price
+          total += cartElement.price * cartElement.quantity
         })
       }
 
@@ -48,12 +51,42 @@ const Cart = () => {
       const config: AxiosRequestConfig = {
         headers: { Authorization: `Bearer ${token}` },
       }
-      const res = await deleteCartApi(productId, config)
+      await deleteCartApi(productId, config)
 
       await fetchCarts()
-      toast('Deleted')
+      toast.success('Successfully deleted')
     } catch (error) {
+      toast.error('Something went wrong')
       console.error(error)
+    }
+  }
+
+  const handleIncrementItem = async (cart: IReturnCart) => {
+    try {
+      let token = localStorage.getItem('token')
+      const config: AxiosRequestConfig = {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      await updateQuantityApi({ ...cart, quantity: cart.quantity + 1 }, config)
+
+      await fetchCarts()
+      // toast.success('Successfully added')
+    } catch (error) {
+      toast.error('Something went wrong')
+    }
+  }
+
+  const handleDecrementItem = async (cart: IReturnCart) => {
+    try {
+      let token = localStorage.getItem('token')
+      const config: AxiosRequestConfig = {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      await updateQuantityApi({ ...cart, quantity: cart.quantity - 1 }, config)
+      await fetchCarts()
+      // toast.success('Successfully added')
+    } catch (error) {
+      toast.error('Something went wrong')
     }
   }
 
@@ -91,17 +124,22 @@ const Cart = () => {
             <div className="flex border-b-2 py-4" key={cart.productId}>
               <div className="w-2/6">
                 {cart.imageUrl && (
-                  <img
+                  <Image
                     src={cart.imageUrl}
                     alt={cart.productName}
-                    className="w-24"
+                    width={100}
+                    height={100}
                   />
                 )}
               </div>
               <div className="w-3/6 items-center justify-end">
                 <h1 className="mb-4">{cart.productName}</h1>
                 <div className="flex justify-evenly">
-                  <Counter id={cart.productId} quantity={cart.quantity} />
+                  <Counter
+                    cart={cart}
+                    handleDecrementItem={handleDecrementItem}
+                    handleIncrementItem={handleIncrementItem}
+                  />
                   <button onClick={() => deleteCartProduct(cart.productId)}>
                     <BsTrashFill className="text-2xl text-red-600" />
                   </button>
@@ -128,11 +166,7 @@ const Cart = () => {
             >
               Proceed to checkout
             </button>
-            <button
-              className="bg-red-400 p-2 rounded-md w-full"
-              // disabled={carts.length < 1}
-              disabled
-            >
+            <button className="bg-red-400 p-2 rounded-md w-full" disabled>
               Clear cart
             </button>
           </div>

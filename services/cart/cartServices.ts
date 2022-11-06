@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios'
 import axios from '../../apis/axios'
 
-import { IAddCartApi } from './types'
+import { IAddCartApi, IReturnCart } from './types'
 
 const END_POINTS = {
   ADD: '/cart/add',
@@ -23,8 +23,11 @@ export const countCartApi = () => {
   return axios.get(END_POINTS.COUNT)
 }
 
-export const updateQuantityApi = () => {
-  return axios.put(END_POINTS.UPDATE_QUANTITY)
+export const updateQuantityApi = (
+  data: IReturnCart,
+  config: AxiosRequestConfig
+) => {
+  return axios.put(END_POINTS.UPDATE_QUANTITY, data, config)
 }
 
 export const deleteCartApi = (productId, config: AxiosRequestConfig) => {

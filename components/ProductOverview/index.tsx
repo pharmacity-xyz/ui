@@ -23,7 +23,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
       const config: AxiosRequestConfig = {
         headers: { Authorization: `Bearer ${user!.token}` },
       }
-      const res = await addCartApi(
+      await addCartApi(
         {
           productId: product.productId,
           userId: user!.userId,
@@ -31,9 +31,9 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         },
         config
       )
-      toast('Added to your cart!')
+      toast.success('Added to your cart!')
     } catch (error) {
-      console.error(error)
+      toast.error('Something went wrong')
     }
   }
 
