@@ -2,37 +2,31 @@
   {
     "id": 1,
     "name": "Centrifuge",
-    "img": "/images/centrifuge.jpg",
-    "link": "/"
+    "img": "/images/centrifuge.jpg"
   },
   {
     "id": 2,
     "name": "Microscope",
-    "img": "/images/microscope.jpg",
-    "link": "/"
+    "img": "/images/microscope.jpg"
   },
   {
     "id": 3,
     "name": "Incubator",
-    "img": "/images/incubator.jpg",
-    "link": "/"
+    "img": "/images/incubator.jpg"
   },
   {
     "id": 4,
     "name": "MRI",
-    "img": "/images/Mri.jpg",
-    "link": "/"
+    "img": "/images/Mri.jpg"
   },
   {
     "id": 5,
     "name": "ECG_machine",
-    "img": "/images/ecg_machine.jpg",
-    "link": "/"
+    "img": "/images/ecg_machine.jpg"
   },
   {
     "id": 6,
-    "name": "Sale",
-    "img": "/images/sale.png",
-    "link": "/"
+    "name": "Mindray Special Pricing",
+    "img": "/images/mindray.jpg"
   }
 ]

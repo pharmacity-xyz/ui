@@ -28,25 +28,22 @@ const AuthContext = React.createContext<IAuthContext | null>(null)
 
 export const AuthContextProvider = ({ children }) => {
   const [loginError, setLoginError] = useState(false)
-  const [user, setUser] = useState<IUserData>({
-    userId: '',
-    token: '',
-  } as IUserData)
+  const [user, setUser] = useState<IUserData | null>(null)
   const router = useRouter()
 
   const register = async (req: ISignUpApiData) => {
     try {
       if (req.password !== req.confirmPassword) {
-        toast('Password and Confirmpassowrd does not match!')
+        toast.error('Password and Confirmpassowrd does not match!')
         return
       }
 
       await signUpApi(req)
       router.push('/login')
-      toast('Created!')
+      toast.success('Successfully created')
     } catch (error) {
       console.error(error)
-      toast('Failed!')
+      toast.error('Register failed')
     }
   }
 
@@ -70,7 +67,6 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
-    console.log(user)
     setUser({ userId: '', token: '' } as IUserData)
 
     localStorage.removeItem('userId')
@@ -78,7 +74,7 @@ export const AuthContextProvider = ({ children }) => {
 
     router.push('/')
     window.location.reload()
-    toast('Logged out!')
+    toast.success('Logged out!')
   }
 
   return (

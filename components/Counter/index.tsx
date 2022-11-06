@@ -1,24 +1,23 @@
 import React from 'react'
-import { useShoppingCart } from 'use-shopping-cart'
 
-const Counter = ({ id, quantity }) => {
-  const { incrementItem, decrementItem } = useShoppingCart()
+const Counter = ({ cart, handleIncrementItem, handleDecrementItem }) => {
   return (
     <div>
       <button
-        onClick={() => decrementItem(id)}
+        disabled={cart.quantity === 1}
+        onClick={() => handleDecrementItem(cart)}
         className="text-[#75b239] border border-[#75b239] p-1 rounded-l-md"
       >
         -
       </button>
       <input
-        type="number"
+        type="text"
         readOnly
-        value={quantity}
+        value={cart.quantity}
         className="border border-gray py-1 w-3/5 text-center"
       />
       <button
-        onClick={() => incrementItem(id)}
+        onClick={() => handleIncrementItem(cart)}
         className="text-[#75b239] border border-[#75b239] p-1 rounded-r-md"
       >
         +

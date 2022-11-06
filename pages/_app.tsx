@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <AuthContextProvider>
           <Component {...pageProps} />
-          <ToastContainer position="bottom-left" />
+          <ToastContainer position="top-right" />
         </AuthContextProvider>
       </CartProvider>
     </>
