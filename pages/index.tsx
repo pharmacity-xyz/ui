@@ -90,9 +90,6 @@ const Home: NextPage = () => {
             <h2 className="text-3xl">
               <strong className="text-[#75b239]">Featured Products</strong>
             </h2>
-            <Link href="/product">
-              <a className="hover:underline">See all</a>
-            </Link>
           </div>
           <div className="px-8 py-6">
             <hr />
