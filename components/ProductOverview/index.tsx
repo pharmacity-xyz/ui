@@ -1,4 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
+import Image from 'next/image'
 import React from 'react'
 import { toast } from 'react-toastify'
 import { useShoppingCart } from 'use-shopping-cart'
@@ -35,11 +36,13 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
     <div className="bg-white">
       <div className="pt-6">
         <div className="mx-auto mt-6 max-w-2xl">
-          <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-            <img
+          <div className="rounded-lg flex justify-center">
+            <Image
               src={product.imageUrl}
               alt="Two each of gray, white, and black shirts laying flat."
               className="object-cover object-center"
+              width={300}
+              height={300}
             />
           </div>
         </div>
@@ -153,48 +156,6 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
 
               <div className="space-y-6">
                 <p className="text-base text-gray-900">
-                  {product.productDescription}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-              <div className="mt-4">
-                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                  <li className="text-gray-400">
-                    <span className="text-gray-600">
-                      Hand cut and sewn locally
-                    </span>
-                  </li>
-
-                  <li className="text-gray-400">
-                    <span className="text-gray-600">
-                      Dyed with our proprietary colors
-                    </span>
-                  </li>
-
-                  <li className="text-gray-400">
-                    <span className="text-gray-600">
-                      Pre-washed &amp; pre-shrunk
-                    </span>
-                  </li>
-
-                  <li className="text-gray-400">
-                    <span className="text-gray-600">
-                      Ultra-soft 100% cotton
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">
                   {product.productDescription}
                 </p>
               </div>
