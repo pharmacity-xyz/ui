@@ -75,11 +75,7 @@ const Home: NextPage = () => {
           {productList.map((product) => (
             <div key={product.id} className="grid border p-16">
               <Image src={product.img} alt="" width="200" height="200" />
-              <Link href={product.link}>
-                <a className="text-center py-4 hover:underline">
-                  {product.name}
-                </a>
-              </Link>
+              <p className="text-center py-4">{product.name}</p>
             </div>
           ))}
         </div>
