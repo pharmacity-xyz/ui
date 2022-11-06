@@ -1,19 +1,25 @@
 import { AxiosRequestConfig } from 'axios'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { toast } from 'react-toastify'
-import { useShoppingCart } from 'use-shopping-cart'
+
 import { useAuth } from '../../context/authContextProvider'
 import { addCartApi } from '../../services/cart/cartServices'
 import { IReturnProducts } from '../../services/product/types'
 
 const ProductOverview = ({ product }: { product: IReturnProducts }) => {
-  const { addItem } = useShoppingCart()
+  const router = useRouter()
 
   const { user } = useAuth()
 
   const handleAddCart = async () => {
     try {
+      if (user === null) {
+        router.push('/login')
+        toast('Please login')
+        return
+      }
       const config: AxiosRequestConfig = {
         headers: { Authorization: `Bearer ${user!.token}` },
       }
@@ -25,7 +31,6 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         },
         config
       )
-      console.log(res)
       toast('Added to your cart!')
     } catch (error) {
       console.error(error)

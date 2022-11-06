@@ -28,10 +28,7 @@ const AuthContext = React.createContext<IAuthContext | null>(null)
 
 export const AuthContextProvider = ({ children }) => {
   const [loginError, setLoginError] = useState(false)
-  const [user, setUser] = useState<IUserData>({
-    userId: '',
-    token: '',
-  } as IUserData)
+  const [user, setUser] = useState<IUserData | null>(null)
   const router = useRouter()
 
   const register = async (req: ISignUpApiData) => {
@@ -70,7 +67,6 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
-    console.log(user)
     setUser({ userId: '', token: '' } as IUserData)
 
     localStorage.removeItem('userId')
