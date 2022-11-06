@@ -148,9 +148,9 @@ const ProductManagement = () => {
                                   scope="row"
                                 >
                                   {product.featured ? (
-                                    <h1>true</h1>
+                                    <h1>TRUE</h1>
                                   ) : (
-                                    <h1>false</h1>
+                                    <h1>FALSE</h1>
                                   )}
                                 </th>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">

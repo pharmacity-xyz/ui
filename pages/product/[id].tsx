@@ -63,12 +63,6 @@ const ProductDetail: React.FC<Props> = () => {
                         scope="col"
                         className="text-sm font-medium text-white px-6 py-4"
                       >
-                        Category
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text-white px-6 py-4"
-                      >
                         Price
                       </th>
                     </tr>
@@ -76,16 +70,13 @@ const ProductDetail: React.FC<Props> = () => {
                   <tbody className="text-center">
                     <tr className="border-b">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">
-                        1
+                        {product.productId}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        Mark
+                        {product.productName}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        Otto
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        @mdo
+                        $ {product.price}
                       </td>
                     </tr>
                   </tbody>
@@ -113,9 +104,12 @@ const ProductDetail: React.FC<Props> = () => {
             <div className="grid md:grid-cols-3 gap-6 lg:gap-12 text-center">
               <div className="mb-12 md:mb-0">
                 <div className="flex justify-center mb-6">
-                  <img
+                  <Image
                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg"
                     className="rounded-full shadow-lg w-32"
+                    alt=""
+                    width={100}
+                    height={100}
                   />
                 </div>
                 <h5 className="text-xl font-semibold mb-4">Maria Smantha</h5>
@@ -229,9 +223,12 @@ const ProductDetail: React.FC<Props> = () => {
               </div>
               <div className="mb-12 md:mb-0">
                 <div className="flex justify-center mb-6">
-                  <img
+                  <Image
                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
                     className="rounded-full shadow-lg w-32"
+                    alt=""
+                    width={100}
+                    height={100}
                   />
                 </div>
                 <h5 className="text-xl font-semibold mb-4">Lisa Cudrow</h5>
@@ -344,9 +341,12 @@ const ProductDetail: React.FC<Props> = () => {
               </div>
               <div className="mb-0">
                 <div className="flex justify-center mb-6">
-                  <img
+                  <Image
                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg"
                     className="rounded-full shadow-lg w-32"
+                    alt=""
+                    width={100}
+                    height={100}
                   />
                 </div>
                 <h5 className="text-xl font-semibold mb-4">John Smith</h5>
