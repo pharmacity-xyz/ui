@@ -47,7 +47,7 @@ export const Header = () => {
           <a className="px-4 bg-orange-400 h-8">About</a>
         </Link>
       </div>
-      <div className="w-full block lg:flex lg:items-center lg:w-auto">
+      <div className="flex items-center w-auto">
         <div className="flex gap-4">
           {userId === null && token === null ? (
             <div>

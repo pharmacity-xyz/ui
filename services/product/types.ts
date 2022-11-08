@@ -7,19 +7,6 @@ export interface IAddProductAPI {
   categoryId: string
 }
 
-// export interface IUpdateProductAPI {
-//   productId: string
-//   productName: string
-//   productDescription: string
-//   imageUrl: string
-//   images: Array<string>
-//   stock: number
-//   price: number
-//   featured: boolean
-//   category: null
-//   categoryId: string
-// }
-
 export interface IReturnProducts {
   productId: string
   productName: string
@@ -31,4 +18,12 @@ export interface IReturnProducts {
   featured: boolean
   category: Object
   categoryId: string
+}
+
+export type IOrderDetailProducts = {
+  productId: string
+  productName: string
+  imageUrl: string
+  quantity: number
+  totalPrice: number
 }

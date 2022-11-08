@@ -4,14 +4,17 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
 import { useModal } from '../../hooks/useModal'
-import { getOrdersApi } from '../../services/order/orderServices'
+import {
+  getOrderDetailApi,
+  getOrdersApi,
+} from '../../services/order/orderServices'
 import { IReturnOrders } from '../../services/order/types'
 
 const Order = () => {
   const [orders, setOrders] = useState<Array<IReturnOrders>>([])
   const router = useRouter()
 
-  const { setIsOpen } = useModal()
+  const { setIsOpen, setOrderDetail } = useModal()
 
   const fetchOrders = async () => {
     try {
@@ -21,6 +24,21 @@ const Order = () => {
       }
       const res = await getOrdersApi(config)
       setOrders(res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleOrderDetailModal = async (orderId: string) => {
+    try {
+      let token = localStorage.getItem('token')
+      const config: AxiosRequestConfig = {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      const res = await getOrderDetailApi(orderId, config)
+      setOrderDetail(res.data)
+      setIsOpen(true)
+      console.log(res)
     } catch (error) {
       console.error(error)
     }
@@ -55,7 +73,7 @@ const Order = () => {
                 <button
                   type="button"
                   className="border rounded-lg p-2 bg-[#52BA2D] hover:bg-green-500"
-                  onClick={() => setIsOpen(true)}
+                  onClick={() => handleOrderDetailModal(order.id)}
                 >
                   DETAIL
                 </button>
