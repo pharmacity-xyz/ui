@@ -11,7 +11,7 @@ const Order = () => {
   const [orders, setOrders] = useState<Array<IReturnOrders>>([])
   const router = useRouter()
 
-  const { setOpen } = useModal()
+  const { setIsOpen } = useModal()
 
   const fetchOrders = async () => {
     try {
@@ -55,6 +55,7 @@ const Order = () => {
                 <button
                   type="button"
                   className="border rounded-lg p-2 bg-[#52BA2D] hover:bg-green-500"
+                  onClick={() => setIsOpen(true)}
                 >
                   DETAIL
                 </button>
