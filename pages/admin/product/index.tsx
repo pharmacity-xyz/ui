@@ -4,11 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import AdminLayout from '../../../components/AdminLayout'
-import {
-  deleteCategoryApi,
-  getAllCategoriesApi,
-  updateCategoryApi,
-} from '../../../services/category/categoryServices'
+import { updateCategoryApi } from '../../../services/category/categoryServices'
 import {
   deleteProductApi,
   getAllProductsApi,

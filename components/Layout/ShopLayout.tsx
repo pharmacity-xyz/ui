@@ -1,5 +1,4 @@
 import React, { ReactNode, useState } from 'react'
-import Link from 'next/link'
 import { IReturnGetCategories } from '../../services/category/types'
 import ListboxComponent from '../Listbox'
 

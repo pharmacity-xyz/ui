@@ -5,9 +5,7 @@ import Counter from '../components/Counter'
 import { BsTrashFill } from 'react-icons/bs'
 
 import { FeaturedProductsSlider } from '../components/Slider'
-import { ICart } from '../types'
 import Layout from '../components/Layout'
-import { useAuth } from '../context/authContextProvider'
 import {
   deleteCartApi,
   getCartsApi,
