@@ -34,7 +34,7 @@ const ListboxComponent = ({
     >
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium text-gray-700">
+          <Listbox.Label className="block text-sm font-medium text-white">
             Sort by
           </Listbox.Label>
           <div className="relative mt-1">

@@ -43,7 +43,7 @@ const ShopLayout = ({
 
   return (
     <div className="flex w-full h-screen">
-      <div className="w-1/4 bg-[#52BA2D] shadow flex-col justify-between hidden sm:flex">
+      <div className="w-1/4 dark:bg-gray-900 shadow flex-col justify-between hidden sm:flex">
         <div className="px-8">
           <div className="relative mt-10 mb-5 rounded-md shadow-sm">
             <div
@@ -59,7 +59,7 @@ const ShopLayout = ({
                 onChange={(e) => setSearchWord(e.target.value)}
               />
               <svg
-                className="fill-current hover:text-black cursor-pointer text-black"
+                className="fill-current cursor-pointer text-white"
                 onClick={() => searchProducts()}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -85,7 +85,7 @@ const ShopLayout = ({
             {categories.map((category) => (
               <button
                 key={category.categoryId}
-                className="mx-3 px-3 h-8 rounded-md border-black"
+                className="mx-3 px-3 h-8 rounded-md border-black text-white"
                 onClick={() => searchProductsByCategory(category.categoryId)}
               >
                 {category.name}
