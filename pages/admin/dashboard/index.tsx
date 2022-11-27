@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from 'axios'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,8 +10,11 @@ import {
   Legend,
   Filler,
 } from 'chart.js'
+import { useEffect, useState } from 'react'
 import { Bar, Line, Scatter, Bubble } from 'react-chartjs-2'
+import { toast } from 'react-toastify'
 import AdminLayout from '../../../components/AdminLayout'
+import { getOrdersForAdminApi } from '../../../services/order/orderServices'
 
 ChartJS.register(
   CategoryScale,
@@ -24,10 +28,23 @@ ChartJS.register(
 )
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'May', 'May'],
+  labels: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
   datasets: [
     {
-      data: [0.1, 0.4, 0.2, 0.3, 0.7, 0.4, 0.6, 0.3],
+      data: [0.1, 0.4, 0.2, 0.3, 0.7, 0.4, 0.6, 0.3, 0.4, 0.5, 0.2, 0.1],
     },
   ],
 }
@@ -62,6 +79,36 @@ const options = {
 }
 
 const Dashboard = () => {
+const [monthData, setMonthData] = useState(Array<number>(12).fill(0))
+  const fetchAllOrders = async () => {
+    try {
+      let token = localStorage.getItem('token')
+      const config: AxiosRequestConfig = {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      const res = await getOrdersForAdminApi(config)
+
+      res.data.forEach(order => {
+        const month = new Date(order.orderDate).getUTCMonth() 
+        console.log(monthData[month-1])
+        monthData[month-1] += 1
+        // console.log(month)
+      });
+      setMonthData(monthData)
+    //   console.log(monthData)
+      //   setOrders(res.data)
+    } catch (error) {
+      toast.error('Something went wrong')
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    // console.log(monthData[11])
+    fetchAllOrders()
+      console.log(monthData)
+  }, [])
+
   return (
     <AdminLayout title="Dashboard">
       <Line data={data} width={100} height={40} options={options} />
