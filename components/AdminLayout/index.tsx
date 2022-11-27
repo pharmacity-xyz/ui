@@ -38,31 +38,38 @@ const AdminLayout = ({ children, title = 'Medical Equipment' }: Props) => (
             </Link>
           </div>
           <ul className="mt-12">
+            <Link href="/admin/dashboard">
+              <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
+                <div className="flex items-center">
+                  <span className="text-sm  ml-2">Dashboard</span>
+                </div>
+              </li>
+            </Link>
             <Link href="/admin/user">
               <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
                 <div className="flex items-center">
-                  <span className="text-sm  ml-2">User</span>
+                  <span className="text-sm  ml-2">Users</span>
                 </div>
               </li>
             </Link>
             <Link href="/admin/category">
               <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
                 <div className="flex items-center">
-                  <span className="text-sm  ml-2">Category</span>
+                  <span className="text-sm  ml-2">Categories</span>
                 </div>
               </li>
             </Link>
             <Link href="/admin/product">
               <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
                 <div className="flex items-center">
-                  <span className="text-sm  ml-2">Product</span>
+                  <span className="text-sm  ml-2">Products</span>
                 </div>
               </li>
             </Link>
             <Link href="/admin/order">
               <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
                 <div className="flex items-center">
-                  <span className="text-sm  ml-2">Order</span>
+                  <span className="text-sm  ml-2">Orders</span>
                 </div>
               </li>
             </Link>

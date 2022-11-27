@@ -26,7 +26,7 @@ const UserManagement = () => {
   }, [])
 
   return (
-    <AdminLayout title="User">
+    <AdminLayout title="User Management">
       <div>
         <h1 className="text-2xl">User List</h1>
         <div className="container py-10 mx-auto md:px-6">
