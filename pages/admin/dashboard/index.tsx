@@ -9,12 +9,14 @@ import {
   Tooltip,
   Legend,
   Filler,
+  ArcElement,
 } from 'chart.js'
 import { useEffect, useState } from 'react'
 import { Bar, Line, Scatter, Bubble } from 'react-chartjs-2'
 import { toast } from 'react-toastify'
 import AdminLayout from '../../../components/AdminLayout'
 import WelcomeBanner from '../../../components/Banner/WelcomeBanner'
+import DoughnutChartCard from '../../../components/Card/DoughnutChartCard'
 import OrderMonthCard from '../../../components/Card/OrderMonthCard'
 import OrderYearCard from '../../../components/Card/OrderYearCard'
 import {
@@ -27,6 +29,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  ArcElement,
   Filler,
   Title,
   Tooltip,
@@ -201,6 +204,7 @@ const Dashboard = () => {
         options={options}
         year={year}
       />
+      <DoughnutChartCard />
     </AdminLayout>
   )
 }
