@@ -27,9 +27,8 @@ const AdminLayout = ({ children, title = 'Medical Equipment' }: Props) => (
         content="https://nextjs-typescript-react-stripe-js.vercel.app/social_card.png"
       />
     </Head>
-    <div className="flex flex-no-wrap h-screen sticky top-0 overflow-x-scroll">
-      {/* <div className="flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out"> */}
-      <div className="w-64 absolute sm:relative bg-gray-800 shadow h-full flex-col justify-between hidden sm:flex">
+    <div className="flex flex-no-wrap h-screen overflow-x-scroll">
+      <div className="w-64 sticky top-0 bg-gray-800 shadow h-full flex-col justify-between hidden sm:flex">
         <div className="px-8">
           <div className="h-16 w-full flex items-center">
             <Link href="/">

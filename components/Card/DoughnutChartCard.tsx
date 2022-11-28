@@ -1,30 +1,9 @@
-import React from 'react'
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from 'chart.js'
-import { Bar, Line, Scatter, Bubble, Doughnut } from 'react-chartjs-2'
-// import DoughnutChart from '../../charts/DoughnutChart'
+import { AxiosRequestConfig } from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Doughnut } from 'react-chartjs-2'
+import { toast } from 'react-toastify'
+import { getPieChartsDataApi } from '../../services/order/orderServices'
 
-// Import utilities
-// import { tailwindConfig } from '../../utils/Utils'
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Filler,
-//   Title,
-//   Tooltip,
-//   Legend
-// )
 const data = {
   backgroundColor: [
     'rgb(2, 88, 255)',
@@ -58,15 +37,52 @@ const options = {
   cutout: 150,
 }
 
+interface IData {
+  backgroundColor: Array<string>
+  labels: Array<string>
+  datasets: Array<IDataSet>
+}
+
+interface IDataSet {
+  label: string
+  data: Array<number>
+  backgroundColor: Array<string>
+  hoverOffset: number
+}
+
 function DoughnutChartCard() {
+  const [doughnutChart, setDoughnutChart] = useState<IData>(data)
+
+  const fetchPieChartData = async () => {
+    try {
+      let token = localStorage.getItem('token')
+      const config: AxiosRequestConfig = {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      const res = await getPieChartsDataApi(config)
+      let newData: IData = { datasets: [{} as IDataSet] } as IData
+      newData.backgroundColor = res.data.colors
+      newData.labels = res.data.labels
+      newData.datasets[0].data = res.data.numbers
+      newData.datasets[0].backgroundColor = res.data.colors
+      setDoughnutChart(newData)
+    } catch (error) {
+      toast.error('Something went wrong')
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchPieChartData()
+  }, [])
+
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
         <h2 className="font-semibold text-slate-800">Top Countries</h2>
       </header>
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
-      <Doughnut data={data} width={50} height={50} options={options} />
+
+      <Doughnut data={doughnutChart} width={50} height={50} options={options} />
     </div>
   )
 }
