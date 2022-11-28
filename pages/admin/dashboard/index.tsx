@@ -14,6 +14,9 @@ import { useEffect, useState } from 'react'
 import { Bar, Line, Scatter, Bubble } from 'react-chartjs-2'
 import { toast } from 'react-toastify'
 import AdminLayout from '../../../components/AdminLayout'
+import WelcomeBanner from '../../../components/Banner/WelcomeBanner'
+import OrderMonthCard from '../../../components/Card/OrderMonthCard'
+import OrderYearCard from '../../../components/Card/OrderYearCard'
 import {
   getChartsDataApi,
   getOrdersForAdminApi,
@@ -150,6 +153,7 @@ interface IDataSets {
 }
 
 const Dashboard = () => {
+  const [year, setYear] = useState(2022)
   const [yearData, setYearData] = useState<IData>(yearOriginalData)
   const [monthData, setMonthData] = useState<IData>(monthOriginalData)
 
@@ -161,10 +165,15 @@ const Dashboard = () => {
       }
       const res = await getChartsDataApi(config, year, month)
       let newData: IData = { datasets: [{} as IDataSets] } as IData
-      newData.labels = yearData.labels
       newData.datasets[0].data = res.data
-      setYearData(newData)
-      //   setOrders(res.data)
+      if (month === 0) {
+        newData.labels = yearData.labels
+        setYearData(newData)
+      } else {
+        newData.labels = monthData.labels
+        setMonthData(newData)
+      }
+      setYear(year)
     } catch (error) {
       toast.error('Something went wrong')
       console.error(error)
@@ -173,45 +182,25 @@ const Dashboard = () => {
 
   useEffect(() => {
     // console.log(monthData[11])
-    fetchChartData(2022, 0)
+    fetchChartData(year, 0)
     // console.log(yearData)
   }, [])
 
   return (
     <AdminLayout title="Dashboard">
-      <div className="">
-        <div className="relative z-0 mb-6 group flex justify-end">
-          <select
-            id="years"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(e) => fetchChartData(parseInt(e.target.value), 0)}
-          >
-            <option selected>Choose year</option>
-            <option value={2019}>2019</option>
-            <option value={2020}>2020</option>
-            <option value={2021}>2021</option>
-            <option value={2022}>2022</option>
-          </select>
-        </div>
-        <Line data={yearData} width={200} height={40} options={options} />
-      </div>
-      <div className="my-10">
-        <div className="relative z-0 mb-6 group flex justify-end">
-          <select
-            id="months"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(e) => fetchChartData(parseInt(e.target.value), 0)}
-          >
-            <option selected>Choose month</option>
-            {labels.map((label, index) => (
-              <option value={label.value} key={index}>
-                {label.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <Line data={monthData} width={200} height={40} options={options} />
-      </div>
+      <WelcomeBanner />
+      <OrderYearCard
+        fetchChartData={fetchChartData}
+        yearData={yearData}
+        options={options}
+      />
+      <OrderMonthCard
+        fetchChartData={fetchChartData}
+        labels={labels}
+        monthData={monthData}
+        options={options}
+        year={year}
+      />
     </AdminLayout>
   )
 }
