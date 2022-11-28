@@ -5,6 +5,7 @@ const END_POINTS = {
   GET_ALL: '/order',
   GET_ORDER_DETAIL: '/order/orderid',
   GET_ALL_FOR_ADMIN: '/order/admin',
+  GET_CHART_DATA: '/order/charts',
 }
 
 export const getOrdersApi = (config: AxiosRequestConfig) => {
@@ -20,4 +21,15 @@ export const getOrderDetailApi = (
 
 export const getOrdersForAdminApi = (config: AxiosRequestConfig) => {
   return axios.get(END_POINTS.GET_ALL_FOR_ADMIN, config)
+}
+
+export const getChartsDataApi = (
+  config: AxiosRequestConfig,
+  year: number,
+  month: number
+) => {
+  return axios.get(
+    `${END_POINTS.GET_CHART_DATA}?year=${year}&month=${month}`,
+    config
+  )
 }
