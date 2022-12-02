@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -20,17 +19,11 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         toast('Please login')
         return
       }
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${user!.token}` },
-      }
-      await addCartApi(
-        {
-          productId: product.productId,
-          userId: user!.userId,
-          quantity: 1,
-        },
-        config
-      )
+      await addCartApi({
+        productId: product.productId,
+        userId: user!.userId,
+        quantity: 1,
+      })
       toast.success('Added to your cart!')
     } catch (error) {
       toast.error('Something went wrong')
