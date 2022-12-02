@@ -8,5 +8,5 @@ const END_POINTS = {
 }
 
 export const getAllUsersApi = (config: AxiosRequestConfig) => {
-  return axios.get(END_POINTS.GET_ALL, config)
+  return axios.get(END_POINTS.GET_ALL)
 }

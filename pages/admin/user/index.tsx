@@ -15,6 +15,7 @@ const UserManagement = () => {
         headers: { Authorization: `Bearer ${token}` },
       }
       const res = await getAllUsersApi(config)
+      console.log(res)
       setUsers(res.data)
     } catch (error) {
       console.log(error)
