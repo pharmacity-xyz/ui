@@ -3,12 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { BsInfoCircle } from 'react-icons/bs'
 
-import scheduleVaccineImg from '../public/images/schedule_vaccine.png'
-import fluShotsAreHereImg from '../public/images/flu_shots_are_here.png'
-import doctorImg from '../public/images/doctor.png'
-import productList from '../datas/productList.json'
-import { HomeSlider, FeaturedProductsSlider } from '../components/Slider'
-import Layout from '../components/Layout'
+import scheduleVaccineImg from 'public/images/schedule_vaccine.png'
+import fluShotsAreHereImg from 'public/images/flu_shots_are_here.png'
+import doctorImg from 'public/images/doctor.png'
+import productList from 'datas/productList.json'
+import { HomeSlider, FeaturedProductsSlider } from 'components/Slider'
+import Layout from 'components/Layout'
 import { useEffect, useState } from 'react'
 
 const covid19Rows = [

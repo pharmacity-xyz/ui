@@ -5,8 +5,9 @@ import {
   useContext,
   useState,
 } from 'react'
-import OrderDetailModal from '../components/Modal/OrderModalDetail'
-import { IOrderDetail } from '../services/order/types'
+
+import OrderDetailModal from 'components/Modal/OrderModalDetail'
+import { IOrderDetail } from 'services/order/types'
 
 type ModalContextProps = {
   isOpen: boolean

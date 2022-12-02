@@ -2,14 +2,14 @@ import { AxiosRequestConfig } from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
-import AdminLayout from '../../../../components/AdminLayout'
-import { getAllCategoriesApi } from '../../../../services/category/categoryServices'
-import { IReturnGetCategories } from '../../../../services/category/types'
+import AdminLayout from 'components/AdminLayout'
+import { getAllCategoriesApi } from 'services/category/categoryServices'
+import { IReturnGetCategories } from 'services/category/types'
 import {
   getProductByIdApi,
   updateProductApi,
-} from '../../../../services/product/productServices'
-import { IReturnProducts } from '../../../../services/product/types'
+} from 'services/product/productServices'
+import { IReturnProducts } from 'services/product/types'
 
 const EditProduct = () => {
   const [product, setProduct] = useState({} as IReturnProducts)

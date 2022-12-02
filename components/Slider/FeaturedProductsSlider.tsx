@@ -4,8 +4,8 @@ import Carousel from 'react-multi-carousel'
 import Link from 'next/link'
 
 import 'react-multi-carousel/lib/styles.css'
-import { IReturnProducts } from '../../services/product/types'
-import { getFeaturedProducts } from '../../services/product/productServices'
+import { IReturnProducts } from 'services/product/types'
+import { getFeaturedProducts } from 'services/product/productServices'
 
 const responsive = {
   desktop: {

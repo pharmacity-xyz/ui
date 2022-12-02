@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Carousel from 'react-multi-carousel'
 
-import homeSlider from '../../datas/homeSlider.json'
+import homeSlider from 'datas/homeSlider.json'
 
 const responsive = {
   desktop: {

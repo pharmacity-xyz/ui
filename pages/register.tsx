@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-import { useAuth } from '../context/authContextProvider'
-import { ISignUpApiData } from '../services/auth/types'
+import { useAuth } from 'context/authContextProvider'
+import { ISignUpApiData } from 'services/auth/types'
 
 const Register: NextPage = () => {
   const [requestForm, setRequestForm] = useState({

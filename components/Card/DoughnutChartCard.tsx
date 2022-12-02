@@ -2,7 +2,8 @@ import { AxiosRequestConfig } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { toast } from 'react-toastify'
-import { getPieChartsDataApi } from '../../services/order/orderServices'
+
+import { getPieChartsDataApi } from 'services/order/orderServices'
 
 const data = {
   backgroundColor: [

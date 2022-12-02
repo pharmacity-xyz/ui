@@ -2,9 +2,10 @@ import { AxiosRequestConfig } from 'axios'
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import Layout from '../components/Layout'
-import { IReturnUser } from '../services/user/types'
-import { getUsersApi, updateUserApi } from '../services/user/userServices'
+
+import Layout from 'components/Layout'
+import { IReturnUser } from 'services/user/types'
+import { getUsersApi, updateUserApi } from 'services/user/userServices'
 
 const Account: NextPage = () => {
   const [user, setUser] = useState<IReturnUser>({} as IReturnUser)
@@ -32,7 +33,7 @@ const Account: NextPage = () => {
       }
       const res = await updateUserApi(config, user)
       setUser(res.data)
-      toast.success("Update successfully")
+      toast.success('Update successfully')
     } catch (error) {
       console.log(error)
     }

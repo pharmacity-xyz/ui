@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from 'react'
-import { IReturnGetCategories } from '../../services/category/types'
+
+import { IReturnGetCategories } from 'services/category/types'
 import ListboxComponent from '../Listbox'
 
 type Props = {

@@ -1,12 +1,12 @@
 import { NextPage } from 'next'
 import Image from 'next/image'
 import React from 'react'
-import Layout from '../components/Layout'
 
-import img1 from '../public/images/hero_bg_2.jpg'
-import person1 from '../public/images/person_1.jpg'
-import person2 from '../public/images/person_2.jpg'
-import person3 from '../public/images/person_3.jpg'
+import Layout from 'components/Layout'
+import img1 from 'public/images/hero_bg_2.jpg'
+import person1 from 'public/images/person_1.jpg'
+import person2 from 'public/images/person_2.jpg'
+import person3 from 'public/images/person_3.jpg'
 
 const introductions = [
   {

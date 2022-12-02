@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { useAuth } from '../context/authContextProvider'
+import { useAuth } from 'context/authContextProvider'
 
 const Login = () => {
   const [emailAddress, setEmailAddress] = useState('')

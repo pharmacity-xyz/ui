@@ -1,21 +1,20 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Counter from '../components/Counter'
 import { BsTrashFill } from 'react-icons/bs'
+import { AxiosRequestConfig } from 'axios'
+import { toast } from 'react-toastify'
 
-import { FeaturedProductsSlider } from '../components/Slider'
-import Layout from '../components/Layout'
+import { FeaturedProductsSlider } from 'components/Slider'
+import Layout from 'components/Layout'
 import {
   deleteCartApi,
   getCartsApi,
   updateQuantityApi,
-} from '../services/cart/cartServices'
-import { AxiosRequestConfig } from 'axios'
-import { IReturnCart } from '../services/cart/types'
-import { toast } from 'react-toastify'
-import { checkoutApi } from '../services/checkout/checkoutServices'
-import Spinner from '../components/Spinner'
+} from 'services/cart/cartServices'
+import { IReturnCart } from 'services/cart/types'
+import { checkoutApi } from 'services/checkout/checkoutServices'
+import Spinner from 'components/Spinner'
 
 const Cart = () => {
   const [carts, setCarts] = useState<Array<IReturnCart>>([{} as IReturnCart])

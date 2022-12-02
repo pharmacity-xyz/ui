@@ -4,9 +4,9 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { toast } from 'react-toastify'
 
-import { useAuth } from '../../context/authContextProvider'
-import { addCartApi } from '../../services/cart/cartServices'
-import { IReturnProducts } from '../../services/product/types'
+import { useAuth } from 'context/authContextProvider'
+import { addCartApi } from 'services/cart/cartServices'
+import { IReturnProducts } from 'services/product/types'
 
 const ProductOverview = ({ product }: { product: IReturnProducts }) => {
   const router = useRouter()

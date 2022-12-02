@@ -1,12 +1,11 @@
 import { AxiosRequestConfig } from 'axios'
 import Image from 'next/image'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-import AdminLayout from '../../../components/AdminLayout'
-import { getOrdersForAdminApi } from '../../../services/order/orderServices'
-import { IReturnOrders } from '../../../services/order/types'
+import AdminLayout from 'components/AdminLayout'
+import { getOrdersForAdminApi } from 'services/order/orderServices'
+import { IReturnOrders } from 'services/order/types'
 
 const OrderManagement = () => {
   const [orders, setOrders] = useState<Array<IReturnOrders>>([])

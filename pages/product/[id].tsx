@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-
-import { IProduct } from '../../types/productType'
-import Layout from '../../components/Layout'
-import ProductOverview from '../../components/ProductOverview'
 import { useRouter } from 'next/router'
-import { getProductByIdApi } from '../../services/product/productServices'
-import { IReturnProducts } from '../../services/product/types'
+
+import { IProduct } from 'types/productType'
+import Layout from 'components/Layout'
+import ProductOverview from 'components/ProductOverview'
+import { getProductByIdApi } from 'services/product/productServices'
+import { IReturnProducts } from 'services/product/types'
 
 type Props = {
   product: IProduct

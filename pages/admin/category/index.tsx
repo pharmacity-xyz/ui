@@ -3,13 +3,13 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-import AdminLayout from '../../../components/AdminLayout'
+import AdminLayout from 'components/AdminLayout'
 import {
   deleteCategoryApi,
   getAllCategoriesApi,
   updateCategoryApi,
-} from '../../../services/category/categoryServices'
-import { IReturnGetCategories } from '../../../services/category/types'
+} from 'services/category/categoryServices'
+import { IReturnGetCategories } from 'services/category/types'
 
 const CategoryManagement = () => {
   const [categories, setCategories] = useState<Array<IReturnGetCategories>>([])

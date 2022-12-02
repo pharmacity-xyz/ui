@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react'
 import Modal from 'react-modal'
-import { IOrderDetail } from '../../services/order/types'
+
+import { IOrderDetail } from 'services/order/types'
 
 const customStyles = {
   content: {

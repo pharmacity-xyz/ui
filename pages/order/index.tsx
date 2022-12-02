@@ -2,13 +2,14 @@ import { AxiosRequestConfig } from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import Layout from '../../components/Layout'
-import { useModal } from '../../hooks/useModal'
+
+import Layout from 'components/Layout'
+import { useModal } from 'hooks/useModal'
 import {
   getOrderDetailApi,
   getOrdersApi,
-} from '../../services/order/orderServices'
-import { IReturnOrders } from '../../services/order/types'
+} from 'services/order/orderServices'
+import { IReturnOrders } from 'services/order/types'
 
 const Order = () => {
   const [orders, setOrders] = useState<Array<IReturnOrders>>([])

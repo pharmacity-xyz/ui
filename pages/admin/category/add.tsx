@@ -2,8 +2,8 @@ import { AxiosRequestConfig } from 'axios'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
-import AdminLayout from '../../../components/AdminLayout'
-import { addCategoryApi } from '../../../services/category/categoryServices'
+import AdminLayout from 'components/AdminLayout'
+import { addCategoryApi } from 'services/category/categoryServices'
 
 const AddCategory = () => {
   const [name, setName] = useState('')

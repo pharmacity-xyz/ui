@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 
-import { useAuth } from '../../context/authContextProvider'
+import { useAuth } from 'context/authContextProvider'
 
 export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false)

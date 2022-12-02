@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import { checkEmailExist, forgotPassword } from '../services/auth/authServices'
+import { checkEmailExist, forgotPassword } from 'services/auth/authServices'
 
 const ForgotPassword = () => {
   const [emailExist, setEmailExist] = useState<number | null>(null)

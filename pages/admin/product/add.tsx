@@ -2,11 +2,11 @@ import { AxiosRequestConfig } from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
-import AdminLayout from '../../../components/AdminLayout'
-import { getAllCategoriesApi } from '../../../services/category/categoryServices'
-import { IReturnGetCategories } from '../../../services/category/types'
-import { addProductApi } from '../../../services/product/productServices'
-import { IAddProductAPI } from '../../../services/product/types'
+import AdminLayout from 'components/AdminLayout'
+import { getAllCategoriesApi } from 'services/category/categoryServices'
+import { IReturnGetCategories } from 'services/category/types'
+import { addProductApi } from 'services/product/productServices'
+import { IAddProductAPI } from 'services/product/types'
 
 const AddProduct = () => {
   const [newProduct, setNewProduct] = useState({} as IAddProductAPI)

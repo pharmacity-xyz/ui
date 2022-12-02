@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify'
-import { logInApi, signUpApi } from '../services/auth/authServices'
-import { ISignUpApiData } from '../services/auth/types'
+
+import { logInApi, signUpApi } from 'services/auth/authServices'
+import { ISignUpApiData } from 'services/auth/types'
 
 export const AUTH_ACTION = {
   LOGIN: 'LOGIN',
