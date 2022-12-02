@@ -9,7 +9,6 @@ import {
   getAllProductsApi,
 } from 'services/product/productServices'
 import { IReturnProducts } from 'services/product/types'
-import { getAxiosConfig } from 'utils/config'
 
 const ProductManagement = () => {
   const [products, setProducts] = useState<Array<IReturnProducts>>([])
@@ -25,11 +24,7 @@ const ProductManagement = () => {
 
   const handleEditProduct = async (categoryId: string, updatedName: string) => {
     try {
-      const config = getAxiosConfig()
-      const res = await updateCategoryApi(
-        { categoryId, name: updatedName },
-        config
-      )
+      const res = await updateCategoryApi({ categoryId, name: updatedName })
       setProducts(res.data)
       toast('Updated!')
     } catch (error) {

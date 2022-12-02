@@ -11,11 +11,7 @@ const AddCategory = () => {
 
   const handleAddCategory = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await addCategoryApi({ categoryName: name }, config)
+      await addCategoryApi({ categoryName: name })
       router.push('/admin/category')
     } catch (error) {
       console.error(error)
