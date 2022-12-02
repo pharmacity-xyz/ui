@@ -73,21 +73,21 @@ const UserManagement = () => {
                         <tbody>
                           {users.map((user) => (
                             <>
-                              <tr className="border-b" key={user.userId}>
+                              <tr className="border-b" key={user.UserId}>
                                 <th
                                   className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                   scope="row"
                                 >
-                                  {user.firstName} {user.lastName}
+                                  {user.FirstName} {user.LastName}
                                 </th>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                  {user.email}
+                                  {user.Email}
                                 </td>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                  {user.country}
+                                  {user.Country}
                                 </td>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                  {user.companyName}
+                                  {user.CompanyName}
                                 </td>
                                 {/* <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
                                   <a
