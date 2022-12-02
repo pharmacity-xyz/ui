@@ -184,9 +184,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    // console.log(monthData[11])
     fetchChartData(year, 0)
-    // console.log(yearData)
   }, [])
 
   return (

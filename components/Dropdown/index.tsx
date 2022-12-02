@@ -27,6 +27,11 @@ export default function Dropdown() {
                   Orders
                 </a>
               </Link>
+              <Link href="/account">
+                <a className="block px-4 py-2 text-sm text-center text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">
+                  Account
+                </a>
+              </Link>
               <button
                 className="w-full block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                 onClick={logout}
