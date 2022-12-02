@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import { getAxiosConfig } from 'utils/config'
 import axios from '../../apis/axios'
 import { IAddProductAPI } from './types'

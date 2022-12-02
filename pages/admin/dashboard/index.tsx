@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import {
   Chart as ChartJS,
   CategoryScale,

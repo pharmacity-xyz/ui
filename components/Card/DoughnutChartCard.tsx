@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { toast } from 'react-toastify'

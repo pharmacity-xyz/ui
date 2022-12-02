@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import React, { useEffect, useState } from 'react'
 
 import AdminLayout from 'components/AdminLayout'
