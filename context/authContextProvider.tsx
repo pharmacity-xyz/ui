@@ -44,7 +44,7 @@ export const AuthContextProvider = ({ children }) => {
       toast.success('Successfully created')
     } catch (error) {
       console.error(error)
-      toast.error('Register failed')
+      toast.error('Register Failed')
     }
   }
 
@@ -75,7 +75,7 @@ export const AuthContextProvider = ({ children }) => {
 
     router.push('/')
     window.location.reload()
-    toast.success('Logged out!')
+    toast.success('Signed Out')
   }
 
   return (
