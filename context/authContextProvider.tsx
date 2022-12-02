@@ -34,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
   const register = async (req: ISignUpApiData) => {
     try {
       if (req.password !== req.confirmPassword) {
-        toast.error('Password and Confirmpassowrd does not match!')
+        toast.error('Password and Confirm Passowrd does not match')
         return
       }
 
