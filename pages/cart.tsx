@@ -70,7 +70,6 @@ const Cart = () => {
       await updateQuantityApi({ ...cart, quantity: cart.quantity + 1 }, config)
 
       await fetchCarts()
-      // toast.success('Successfully added')
     } catch (error) {
       toast.error('Something went wrong')
     }

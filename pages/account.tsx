@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -12,12 +11,9 @@ const Account: NextPage = () => {
 
   const fetchUsers = async () => {
     try {
-      let token = localStorage.getItem('token')
       let userId = localStorage.getItem('userId')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getUsersApi(config, userId!)
+
+      const res = await getUsersApi(userId!)
       setUser(res.data)
     } catch (error) {
       console.log(error)
@@ -26,12 +22,7 @@ const Account: NextPage = () => {
 
   const handleUpdateUser = async () => {
     try {
-      let token = localStorage.getItem('token')
-      let userId = localStorage.getItem('userId')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await updateUserApi(config, user)
+      const res = await updateUserApi(user)
       setUser(res.data)
       toast.success('Update successfully')
     } catch (error) {
@@ -42,6 +33,7 @@ const Account: NextPage = () => {
   useEffect(() => {
     fetchUsers()
   }, [])
+
   return (
     <Layout title="Account">
       <div className="m-10">

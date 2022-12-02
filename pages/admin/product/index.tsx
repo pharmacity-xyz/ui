@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -10,6 +9,7 @@ import {
   getAllProductsApi,
 } from 'services/product/productServices'
 import { IReturnProducts } from 'services/product/types'
+import { getAxiosConfig } from 'utils/config'
 
 const ProductManagement = () => {
   const [products, setProducts] = useState<Array<IReturnProducts>>([])
@@ -25,10 +25,7 @@ const ProductManagement = () => {
 
   const handleEditProduct = async (categoryId: string, updatedName: string) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
+      const config = getAxiosConfig()
       const res = await updateCategoryApi(
         { categoryId, name: updatedName },
         config
@@ -42,11 +39,7 @@ const ProductManagement = () => {
 
   const handleDeleteProduct = async (productId: string) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await deleteProductApi(productId, config)
+      await deleteProductApi(productId)
       fetchAllProducts()
     } catch (error) {
       console.error(error)

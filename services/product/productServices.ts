@@ -1,4 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
+import { getAxiosConfig } from 'utils/config'
 import axios from '../../apis/axios'
 import { IAddProductAPI } from './types'
 
@@ -13,10 +14,8 @@ const END_POINTS = {
   DELETE: '/product',
 }
 
-export const addProductApi = (
-  data: IAddProductAPI,
-  config: AxiosRequestConfig
-) => {
+export const addProductApi = (data: IAddProductAPI) => {
+  const config = getAxiosConfig()
   return axios.post(END_POINTS.ADD, data, config)
 }
 
@@ -40,10 +39,12 @@ export const getFeaturedProducts = () => {
   return axios.get(`${END_POINTS.FEATURED}`)
 }
 
-export const updateProductApi = (data, config: AxiosRequestConfig) => {
+export const updateProductApi = (data) => {
+  const config = getAxiosConfig()
   return axios.put(END_POINTS.UPDATE, data, config)
 }
 
-export const deleteProductApi = (id, config: AxiosRequestConfig) => {
+export const deleteProductApi = (id) => {
+  const config = getAxiosConfig()
   return axios.delete(`${END_POINTS.DELETE}/${id}`, config)
 }

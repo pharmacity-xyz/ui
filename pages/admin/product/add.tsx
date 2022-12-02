@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
@@ -24,11 +23,7 @@ const AddProduct = () => {
 
   const handleAddProduct = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await addProductApi(newProduct, config)
+      await addProductApi(newProduct)
       router.push('/admin/product')
     } catch (error) {
       console.error(error)

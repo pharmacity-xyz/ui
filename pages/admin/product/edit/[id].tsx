@@ -27,11 +27,7 @@ const EditProduct = () => {
 
   const handleUpdateProduct = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await updateProductApi(product, config)
+      await updateProductApi(product)
       router.push('/admin/product')
     } catch (error) {
       console.error(error)
