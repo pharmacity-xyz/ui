@@ -91,11 +91,7 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await checkoutApi(config)
+      const res = await checkoutApi()
 
       // @ts-ignore
       window.open(res as string)
