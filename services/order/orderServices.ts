@@ -21,7 +21,7 @@ export const getOrderDetailApi = (
 }
 
 export const getOrdersForAdminApi = (config: AxiosRequestConfig) => {
-  return axios.get(END_POINTS.GET_ALL_FOR_ADMIN, config)
+  return axios.get(END_POINTS.GET_ALL_FOR_ADMIN)
 }
 
 export const getChartsDataApi = (

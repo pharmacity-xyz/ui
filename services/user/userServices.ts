@@ -7,6 +7,6 @@ const END_POINTS = {
   DELETE: '/user',
 }
 
-export const getAllUsersApi = (config: AxiosRequestConfig) => {
-  return axios.get(END_POINTS.GET_ALL, config)
+export const getAllUsersApi = () => {
+  return axios.get(END_POINTS.GET_ALL)
 }

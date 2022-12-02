@@ -33,7 +33,7 @@ const CategoryManagement = () => {
         headers: { Authorization: `Bearer ${token}` },
       }
       const res = await updateCategoryApi(
-        { categoryId, name: updatedName },
+        { CategoryId: categoryId, Name: updatedName },
         config
       )
       setCategories(res.data)
@@ -108,22 +108,22 @@ const CategoryManagement = () => {
                             <>
                               <tr
                                 className="border-b"
-                                key={category.categoryId}
+                                key={category.CategoryId}
                               >
                                 <th
                                   className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                   scope="row"
                                 >
-                                  {category.categoryId}
+                                  {category.CategoryId}
                                 </th>
                                 <th
                                   className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                   scope="row"
                                 >
                                   <input
-                                    defaultValue={category.name}
+                                    defaultValue={category.Name}
                                     onChange={(e) => {
-                                      category.name = e.target.value
+                                      category.Name = e.target.value
                                     }}
                                   />
                                 </th>
@@ -132,8 +132,8 @@ const CategoryManagement = () => {
                                     className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
                                     onClick={() =>
                                       handleEditCategory(
-                                        category.categoryId,
-                                        category.name
+                                        category.CategoryId,
+                                        category.Name
                                       )
                                     }
                                   >
@@ -144,7 +144,7 @@ const CategoryManagement = () => {
                                   <button
                                     className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
                                     onClick={() =>
-                                      handleDeleteCategory(category.categoryId)
+                                      handleDeleteCategory(category.CategoryId)
                                     }
                                   >
                                     Delete

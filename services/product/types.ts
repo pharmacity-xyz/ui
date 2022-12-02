@@ -8,16 +8,16 @@ export interface IAddProductAPI {
 }
 
 export interface IReturnProducts {
-  productId: string
-  productName: string
-  productDescription: string
-  imageUrl: string
-  images: Array<string>
-  stock: number
-  price: number
-  featured: boolean
-  category: Object
-  categoryId: string
+  ProductId: string
+  ProductName: string
+  ProductDescription: string
+  ImageUrl: string
+  Images: Array<string>
+  Stock: number
+  Price: number
+  Featured: boolean
+  Category: Object
+  CategoryId: string
 }
 
 export type IOrderDetailProducts = {

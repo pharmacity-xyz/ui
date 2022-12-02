@@ -15,7 +15,7 @@ const AddCategory = () => {
       const config: AxiosRequestConfig = {
         headers: { Authorization: `Bearer ${token}` },
       }
-      await addCategoryApi({ categoryName: name }, config)
+      await addCategoryApi({ CategoryName: name }, config)
       router.push('/admin/category')
     } catch (error) {
       console.error(error)

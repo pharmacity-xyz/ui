@@ -1,11 +1,11 @@
 import { IOrderDetailProducts } from '../product/types'
 
 export interface IReturnOrders {
-  id: string
-  orderDate: string
-  totalPrice: number
-  product: string
-  productImageUrl: string
+  OrderId: string
+  OrderDate: string
+  TotalPrice: number
+  Product: string
+  ProductImageUrl: string
 }
 
 export type IOrderDetail = {

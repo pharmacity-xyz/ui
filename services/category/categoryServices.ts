@@ -13,7 +13,7 @@ export const addCategoryApi = (
   data: IAddCategoryApi,
   config: AxiosRequestConfig
 ) => {
-  return axios.post(END_POINTS.ADD, data, config)
+  return axios.post(END_POINTS.ADD, data)
 }
 
 export const getAllCategoriesApi = () => {

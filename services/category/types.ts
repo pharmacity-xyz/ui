@@ -1,14 +1,13 @@
 export interface IAddCategoryApi {
-  categoryName: string
+  CategoryName: string
 }
 
 export interface IReturnGetCategories {
-  categoryId: string
-  name: string
+  CategoryId: string
+  Name: string
 }
 
-
-export interface IUpdateCategory{
-  categoryId: string
-  name: string
+export interface IUpdateCategory {
+  CategoryId: string
+  Name: string
 }
