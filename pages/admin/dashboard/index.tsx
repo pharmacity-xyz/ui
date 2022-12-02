@@ -12,7 +12,6 @@ import {
   ArcElement,
 } from 'chart.js'
 import { useEffect, useState } from 'react'
-import { Bar, Line, Scatter, Bubble } from 'react-chartjs-2'
 import { toast } from 'react-toastify'
 
 import AdminLayout from 'components/AdminLayout'
@@ -20,10 +19,7 @@ import WelcomeBanner from 'components/Banner/WelcomeBanner'
 import DoughnutChartCard from 'components/Card/DoughnutChartCard'
 import OrderMonthCard from 'components/Card/OrderMonthCard'
 import OrderYearCard from 'components/Card/OrderYearCard'
-import {
-  getChartsDataApi,
-  getOrdersForAdminApi,
-} from 'services/order/orderServices'
+import { getChartsDataApi } from 'services/order/orderServices'
 
 ChartJS.register(
   CategoryScale,
@@ -163,11 +159,7 @@ const Dashboard = () => {
 
   const fetchChartData = async (year: number, month: number) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getChartsDataApi(config, year, month)
+      const res = await getChartsDataApi(year, month)
       let newData: IData = { datasets: [{} as IDataSets] } as IData
       newData.datasets[0].data = res.data
       if (month === 0) {

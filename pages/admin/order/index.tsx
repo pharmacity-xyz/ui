@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -12,11 +11,7 @@ const OrderManagement = () => {
 
   const fetchAllOrders = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getOrdersForAdminApi(config)
+      const res = await getOrdersForAdminApi()
       console.log(res)
       setOrders(res.data)
     } catch (error) {
