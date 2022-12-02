@@ -1,14 +1,10 @@
-import { AxiosRequestConfig } from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 import Layout from 'components/Layout'
 import { useModal } from 'hooks/useModal'
-import {
-  getOrderDetailApi,
-  getOrdersApi,
-} from 'services/order/orderServices'
+import { getOrderDetailApi, getOrdersApi } from 'services/order/orderServices'
 import { IReturnOrders } from 'services/order/types'
 
 const Order = () => {
@@ -19,11 +15,7 @@ const Order = () => {
 
   const fetchOrders = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getOrdersApi(config)
+      const res = await getOrdersApi()
       setOrders(res.data)
     } catch (error) {
       console.error(error)
@@ -32,11 +24,7 @@ const Order = () => {
 
   const handleOrderDetailModal = async (orderId: string) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getOrderDetailApi(orderId, config)
+      const res = await getOrderDetailApi(orderId)
       setOrderDetail(res.data)
       setIsOpen(true)
       console.log(res)

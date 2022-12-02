@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -28,14 +27,7 @@ const CategoryManagement = () => {
     updatedName: string
   ) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await updateCategoryApi(
-        { categoryId, name: updatedName },
-        config
-      )
+      const res = await updateCategoryApi({ categoryId, name: updatedName })
       setCategories(res.data)
       toast('Updated!')
     } catch (error) {
@@ -45,11 +37,7 @@ const CategoryManagement = () => {
 
   const handleDeleteCategory = async (categoryId: string) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await deleteCategoryApi(categoryId, config)
+      const res = await deleteCategoryApi(categoryId)
       setCategories(res.data)
     } catch (error) {
       console.error(error)

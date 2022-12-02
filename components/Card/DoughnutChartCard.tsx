@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { toast } from 'react-toastify'
@@ -56,11 +55,7 @@ function DoughnutChartCard() {
 
   const fetchPieChartData = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getPieChartsDataApi(config)
+      const res = await getPieChartsDataApi()
       let newData: IData = { datasets: [{} as IDataSet] } as IData
       newData.backgroundColor = res.data.colors
       newData.labels = res.data.labels

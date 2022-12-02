@@ -2,7 +2,6 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import Counter from '../components/Counter'
 import { BsTrashFill } from 'react-icons/bs'
-import { AxiosRequestConfig } from 'axios'
 import { toast } from 'react-toastify'
 
 import { FeaturedProductsSlider } from 'components/Slider'
@@ -24,11 +23,7 @@ const Cart = () => {
   const fetchCarts = async () => {
     try {
       setLoading(true)
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getCartsApi(config)
+      const res = await getCartsApi()
       setCarts(res.data)
 
       let total = 0
@@ -47,11 +42,7 @@ const Cart = () => {
 
   const deleteCartProduct = async (productId) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await deleteCartApi(productId, config)
+      await deleteCartApi(productId)
 
       await fetchCarts()
       toast.success('Successfully deleted')
@@ -63,14 +54,9 @@ const Cart = () => {
 
   const handleIncrementItem = async (cart: IReturnCart) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await updateQuantityApi({ ...cart, quantity: cart.quantity + 1 }, config)
+      await updateQuantityApi({ ...cart, quantity: cart.quantity + 1 })
 
       await fetchCarts()
-      // toast.success('Successfully added')
     } catch (error) {
       toast.error('Something went wrong')
     }
@@ -78,11 +64,7 @@ const Cart = () => {
 
   const handleDecrementItem = async (cart: IReturnCart) => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      await updateQuantityApi({ ...cart, quantity: cart.quantity - 1 }, config)
+      await updateQuantityApi({ ...cart, quantity: cart.quantity - 1 })
       await fetchCarts()
       // toast.success('Successfully added')
     } catch (error) {
@@ -92,11 +74,7 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await checkoutApi(config)
+      const res = await checkoutApi()
 
       // @ts-ignore
       window.open(res as string)

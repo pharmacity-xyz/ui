@@ -1,20 +1,16 @@
-import { AxiosRequestConfig } from 'axios'
 import React, { useEffect, useState } from 'react'
 
 import AdminLayout from 'components/AdminLayout'
 import { IReturnUser } from 'services/user/types'
 import { getAllUsersApi } from 'services/user/userServices'
+import { getAxiosConfig } from 'utils/config'
 
 const UserManagement = () => {
   const [users, setUsers] = useState<Array<IReturnUser>>([])
 
   const fetchUsers = async () => {
     try {
-      let token = localStorage.getItem('token')
-      const config: AxiosRequestConfig = {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-      const res = await getAllUsersApi(config)
+      const res = await getAllUsersApi()
       setUsers(res.data)
     } catch (error) {
       console.log(error)
