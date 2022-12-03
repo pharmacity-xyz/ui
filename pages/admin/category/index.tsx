@@ -93,53 +93,48 @@ const CategoryManagement = () => {
                         </thead>
                         <tbody>
                           {categories.map((category) => (
-                            <>
-                              <tr
-                                className="border-b"
-                                key={category.categoryId}
+                            <tr className="border-b" key={category.categoryId}>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
                               >
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
+                                {category.categoryId}
+                              </th>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
+                              >
+                                <input
+                                  defaultValue={category.name}
+                                  onChange={(e) => {
+                                    category.name = e.target.value
+                                  }}
+                                />
+                              </th>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                                <button
+                                  className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
+                                  onClick={() =>
+                                    handleEditCategory(
+                                      category.categoryId,
+                                      category.name
+                                    )
+                                  }
                                 >
-                                  {category.categoryId}
-                                </th>
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
+                                  Edit
+                                </button>
+                              </td>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                                <button
+                                  className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
+                                  onClick={() =>
+                                    handleDeleteCategory(category.categoryId)
+                                  }
                                 >
-                                  <input
-                                    defaultValue={category.name}
-                                    onChange={(e) => {
-                                      category.name = e.target.value
-                                    }}
-                                  />
-                                </th>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <button
-                                    className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
-                                    onClick={() =>
-                                      handleEditCategory(
-                                        category.categoryId,
-                                        category.name
-                                      )
-                                    }
-                                  >
-                                    Edit
-                                  </button>
-                                </td>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <button
-                                    className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
-                                    onClick={() =>
-                                      handleDeleteCategory(category.categoryId)
-                                    }
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                            </>
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
                           ))}
                         </tbody>
                       </table>

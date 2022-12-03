@@ -23,7 +23,7 @@ const Account: NextPage = () => {
   const handleUpdateUser = async () => {
     try {
       if (user.email === '') {
-        toast.error('Please enter email')
+        toast.error('Please enter Email')
         return
       }
       if (user.firstName === '') {
