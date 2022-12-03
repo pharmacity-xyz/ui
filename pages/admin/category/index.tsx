@@ -27,6 +27,10 @@ const CategoryManagement = () => {
     updatedName: string
   ) => {
     try {
+      if (updatedName === "") {
+        toast.error("Please enter category name")
+        return
+      }
       const res = await updateCategoryApi({ categoryId, name: updatedName })
       setCategories(res.data)
       toast('Updated!')
@@ -56,7 +60,7 @@ const CategoryManagement = () => {
           <div className="text-right">
             <Link href="/admin/category/add">
               <button type="button" className="border px-5 my-5 bg-green-500">
-                Add
+                ADD
               </button>
             </Link>
           </div>

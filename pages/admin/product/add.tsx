@@ -6,9 +6,16 @@ import { getAllCategoriesApi } from 'services/category/categoryServices'
 import { IReturnGetCategories } from 'services/category/types'
 import { addProductApi } from 'services/product/productServices'
 import { IAddProductAPI } from 'services/product/types'
+import { toast } from 'react-toastify'
 
 const AddProduct = () => {
-  const [newProduct, setNewProduct] = useState({} as IAddProductAPI)
+  const [newProduct, setNewProduct] = useState({
+    productName: '',
+    productDescription: '',
+    imageUrl: '',
+    stock: 0,
+    price: 0,
+  } as IAddProductAPI)
   const [categories, setCategories] = useState<Array<IReturnGetCategories>>([])
   const router = useRouter()
 
@@ -23,6 +30,26 @@ const AddProduct = () => {
 
   const handleAddProduct = async () => {
     try {
+      if (newProduct.productName === '') {
+        toast.error('Please enter product name')
+        return
+      }
+      if (newProduct.productDescription === '') {
+        toast.error('Please enter product description')
+        return
+      }
+      if (newProduct.imageUrl === '') {
+        toast.error('Please enter image url')
+        return
+      }
+      if (newProduct.stock < 0) {
+        toast.error('Please enter valid stock')
+        return
+      }
+      if (newProduct.price < 0) {
+        toast.error('Please enter valid price')
+        return
+      }
       await addProductApi(newProduct)
       router.push('/admin/product')
     } catch (error) {
