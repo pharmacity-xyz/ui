@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -28,7 +27,7 @@ const ProductDetail: React.FC<Props> = () => {
   useEffect(() => {
     const { id } = router.query
     fetchProduct(id as string)
-  }, [])
+  }, [router.query])
 
   return (
     <Layout title="Product Detail">
@@ -85,7 +84,7 @@ const ProductDetail: React.FC<Props> = () => {
           </div>
         </div>
       </div>
-      <div className="mx-5 my-20">
+      {/* <div className="mx-5 my-20">
         <div>
           <section className="mb-20 text-gray-700">
             <div className="text-center md:max-w-xl lg:max-w-3xl mx-auto">
@@ -459,28 +458,9 @@ const ProductDetail: React.FC<Props> = () => {
             </div>
           </section>
         </div>
-      </div>
+      </div> */}
     </Layout>
   )
 }
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const id = context.params?.id
-//   let data: IProduct
-
-//   console.log(context.params?.id)
-
-//   if (typeof id === 'string') {
-//     data = await getProductById(id)
-//   } else {
-//     data = {} as IProduct
-//   }
-
-//   return {
-//     props: {
-//       product: data,
-//     },
-//   }
-// }
 
 export default ProductDetail

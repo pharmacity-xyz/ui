@@ -68,13 +68,13 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
-    setUser({ userId: '', token: '' } as IUserData)
+    setUser(null)
 
     localStorage.removeItem('userId')
     localStorage.removeItem('token')
 
     router.push('/')
-    window.location.reload()
+    // window.location.reload()
     toast.success('Signed Out')
   }
 

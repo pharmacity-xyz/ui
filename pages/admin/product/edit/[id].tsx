@@ -9,25 +9,46 @@ import {
   updateProductApi,
 } from 'services/product/productServices'
 import { IReturnProducts } from 'services/product/types'
+import { toast } from 'react-toastify'
 
 const EditProduct = () => {
   const [product, setProduct] = useState({} as IReturnProducts)
   const [categories, setCategories] = useState<Array<IReturnGetCategories>>([])
   const router = useRouter()
 
-  const fetchAllCategories = async () => {
+  const handleUpdateProduct = async () => {
     try {
-      const res = await getAllCategoriesApi()
-      setCategories(res.data)
+      if (product.productName === '') {
+        toast.error('Please enter product name')
+        return
+      }
+      if (product.productDescription === '') {
+        toast.error('Please enter product description')
+        return
+      }
+      if (product.imageUrl === '') {
+        toast.error('Please enter image url')
+        return
+      }
+      if (product.stock < 0) {
+        toast.error('Please enter valid stock')
+        return
+      }
+      if (product.price < 0) {
+        toast.error('Please enter valid price')
+        return
+      }
+      await updateProductApi(product)
+      router.push('/admin/product')
     } catch (error) {
       console.error(error)
     }
   }
 
-  const handleUpdateProduct = async () => {
+  const fetchAllCategories = async () => {
     try {
-      await updateProductApi(product)
-      router.push('/admin/product')
+      const res = await getAllCategoriesApi()
+      setCategories(res.data)
     } catch (error) {
       console.error(error)
     }

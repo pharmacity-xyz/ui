@@ -102,66 +102,64 @@ const ProductManagement = () => {
                         </thead>
                         <tbody>
                           {products.map((product) => (
-                            <>
-                              <tr className="border-b" key={product.productId}>
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
+                            <tr className="border-b" key={product.productId}>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
+                              >
+                                <input
+                                  defaultValue={product.productName}
+                                  onChange={(e) => {
+                                    product.productName = e.target.value
+                                  }}
+                                />
+                              </th>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
+                              >
+                                {product.stock}
+                              </th>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
+                              >
+                                {product.price}
+                              </th>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
+                              >
+                                {product.featured ? (
+                                  <h1>TRUE</h1>
+                                ) : (
+                                  <h1>FALSE</h1>
+                                )}
+                              </th>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                                <Link
+                                  href={{
+                                    pathname: '/admin/product/edit/[id]',
+                                    query: { id: product.productId },
+                                  }}
+                                  key={product.productId}
                                 >
-                                  <input
-                                    defaultValue={product.productName}
-                                    onChange={(e) => {
-                                      product.productName = e.target.value
-                                    }}
-                                  />
-                                </th>
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
+                                  <a className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">
+                                    Edit
+                                  </a>
+                                </Link>
+                              </td>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                                <button
+                                  className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
+                                  onClick={() =>
+                                    handleDeleteProduct(product.productId)
+                                  }
                                 >
-                                  {product.stock}
-                                </th>
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
-                                >
-                                  {product.price}
-                                </th>
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
-                                >
-                                  {product.featured ? (
-                                    <h1>TRUE</h1>
-                                  ) : (
-                                    <h1>FALSE</h1>
-                                  )}
-                                </th>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <Link
-                                    href={{
-                                      pathname: '/admin/product/edit/[id]',
-                                      query: { id: product.productId },
-                                    }}
-                                    key={product.productId}
-                                  >
-                                    <a className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">
-                                      Edit
-                                    </a>
-                                  </Link>
-                                </td>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <button
-                                    className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
-                                    onClick={() =>
-                                      handleDeleteProduct(product.productId)
-                                    }
-                                  >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                            </>
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
                           ))}
                         </tbody>
                       </table>

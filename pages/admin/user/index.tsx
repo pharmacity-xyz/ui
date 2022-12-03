@@ -59,41 +59,27 @@ const UserManagement = () => {
                             >
                               Company
                             </th>
-                            {/* <th
-                              scope="col"
-                              className="text-white rounded-tr-lg text-sm font-medium px-6 py-4"
-                            ></th> */}
                           </tr>
                         </thead>
                         <tbody>
                           {users.map((user) => (
-                            <>
-                              <tr className="border-b" key={user.userId}>
-                                <th
-                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
-                                  scope="row"
-                                >
-                                  {user.firstName} {user.lastName}
-                                </th>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                  {user.email}
-                                </td>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                  {user.country}
-                                </td>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                  {user.companyName}
-                                </td>
-                                {/* <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <a
-                                    href="#!"
-                                    className="font-medium text-gray-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
-                                  >
-                                    Edit
-                                  </a>
-                                </td> */}
-                              </tr>
-                            </>
+                            <tr className="border-b" key={user.userId}>
+                              <th
+                                className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                scope="row"
+                              >
+                                {user.firstName} {user.lastName}
+                              </th>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                                {user.email}
+                              </td>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                                {user.country}
+                              </td>
+                              <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                                {user.companyName}
+                              </td>
+                            </tr>
                           ))}
                         </tbody>
                       </table>
