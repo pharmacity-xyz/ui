@@ -68,7 +68,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
-    setUser({ userId: '', token: '' } as IUserData)
+    setUser(null)
 
     localStorage.removeItem('userId')
     localStorage.removeItem('token')

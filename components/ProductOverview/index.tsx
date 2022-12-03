@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { toast } from 'react-toastify'
 
 import { useAuth } from 'context/authContextProvider'
@@ -16,7 +16,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
     try {
       if (user === null) {
         router.push('/login')
-        toast('Please login')
+        toast('Please Sign In')
         return
       }
       await addCartApi({
@@ -24,7 +24,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         userId: user!.userId,
         quantity: 1,
       })
-      toast.success('Added to your cart!')
+      router.push('/cart')
     } catch (error) {
       toast.error('Something went wrong')
     }

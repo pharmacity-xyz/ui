@@ -22,6 +22,30 @@ const Account: NextPage = () => {
 
   const handleUpdateUser = async () => {
     try {
+      if (user.email === '') {
+        toast.error('Please enter email')
+        return
+      }
+      if (user.firstName === '') {
+        toast.error('Please enter First name')
+        return
+      }
+      if (user.lastName === '') {
+        toast.error('Please enter Last name')
+        return
+      }
+      if (user.city === '') {
+        toast.error('Please enter City')
+        return
+      }
+      if (user.country === '') {
+        toast.error('Please enter Country')
+        return
+      }
+      if (user.companyName === '') {
+        toast.error('Please enter Company name')
+        return
+      }
       const res = await updateUserApi(user)
       setUser(res.data)
       toast.success('Update successfully')
