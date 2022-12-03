@@ -3,7 +3,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import 'react-multi-carousel/lib/styles.css'
 
 import type { AppProps } from 'next/app'
-import { CartProvider } from 'use-shopping-cart'
 import { ToastContainer } from 'react-toastify'
 import { AuthContextProvider } from '../context/authContextProvider'
 import { ModalProvider } from '../hooks/useModal'
@@ -11,21 +10,12 @@ import { ModalProvider } from '../hooks/useModal'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <CartProvider
-        mode="payment"
-        cartMode="client-only"
-        stripe="hello"
-        successUrl="stripe.com"
-        cancelUrl="twitter.com/dayhaysoos"
-        currency="USD"
-      >
-        <AuthContextProvider>
-          <ModalProvider>
-            <Component {...pageProps} />
-          </ModalProvider>
-          <ToastContainer position="top-right" />
-        </AuthContextProvider>
-      </CartProvider>
+      <AuthContextProvider>
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
+        <ToastContainer position="top-right" />
+      </AuthContextProvider>
     </>
   )
 }

@@ -74,7 +74,7 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.removeItem('token')
 
     router.push('/')
-    window.location.reload()
+    // window.location.reload()
     toast.success('Signed Out')
   }
 

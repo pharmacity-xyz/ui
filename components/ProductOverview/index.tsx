@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { toast } from 'react-toastify'
 
 import { useAuth } from 'context/authContextProvider'
@@ -35,13 +35,15 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
       <div className="pt-6">
         <div className="mx-auto mt-6 max-w-2xl">
           <div className="rounded-lg flex justify-center">
-            <Image
-              src={product.imageUrl}
-              alt="Two each of gray, white, and black shirts laying flat."
-              className="object-cover object-center"
-              width={300}
-              height={300}
-            />
+            {product.imageUrl && (
+              <Image
+                src={product.imageUrl}
+                alt={product.productName}
+                className="object-cover object-center"
+                width={300}
+                height={300}
+              />
+            )}
           </div>
         </div>
         <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
