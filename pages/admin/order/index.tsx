@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import AdminLayout from 'components/AdminLayout'
-import { getOrdersForAdminApi } from 'services/order/orderServices'
+import {
+  getOrdersForAdminApi,
+  updateStatusOrderApi,
+} from 'services/order/orderServices'
 import { IReturnOrders } from 'services/order/types'
 
 const OrderManagement = () => {
@@ -14,6 +17,18 @@ const OrderManagement = () => {
       const res = await getOrdersForAdminApi()
       console.log(res)
       setOrders(res.data)
+    } catch (error) {
+      toast.error('Something went wrong')
+      console.error(error)
+    }
+  }
+
+  const handleUpdateStatusOrder = async (orderId: string) => {
+    try {
+      const res = await updateStatusOrderApi(orderId, 'SHIPPED')
+      console.log(res.data)
+      // setOrders(res.data)
+      // fetchAllOrders()
     } catch (error) {
       toast.error('Something went wrong')
       console.error(error)
@@ -56,7 +71,16 @@ const OrderManagement = () => {
                             >
                               Order Date
                             </th>
-
+                            <th
+                              scope="col"
+                              className="text-white rounded-tl-lg text-sm font-medium px-6 py-4"
+                            >
+                              Order Status
+                            </th>
+                            <th
+                              scope="col"
+                              className="text-white rounded-tr-lg text-sm font-medium px-6 py-4"
+                            ></th>
                             <th
                               scope="col"
                               className="text-white rounded-tr-lg text-sm font-medium px-6 py-4"
@@ -88,11 +112,33 @@ const OrderManagement = () => {
                                   className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                   scope="row"
                                 >
-                                  {order.orderDate}
+                                  {new Date(
+                                    order.orderDate
+                                  ).toLocaleDateString()}
+                                </th>
+                                <th
+                                  className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
+                                  scope="row"
+                                >
+                                  {order.statusOrder}
                                 </th>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                                  {order.statusOrder !== 'SHIPPED' ? (
+                                    <button
+                                      className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
+                                      onClick={() =>
+                                        handleUpdateStatusOrder(order.id)
+                                      }
+                                    >
+                                      SHIPPED
+                                    </button>
+                                  ) : (
+                                    <div></div>
+                                  )}
+                                </td>
+                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
                                   <button className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out">
-                                    Delete
+                                    CANCEL
                                   </button>
                                 </td>
                               </tr>

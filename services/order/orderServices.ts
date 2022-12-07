@@ -7,6 +7,7 @@ const END_POINTS = {
   GET_ALL_FOR_ADMIN: '/order/admin',
   GET_CHART_DATA: '/order/charts',
   GET_PIE_CHART_DATA: '/order/piecharts',
+  UPDATE_STATUS_ORDER: '/order',
 }
 
 export const getOrdersApi = () => {
@@ -35,4 +36,12 @@ export const getChartsDataApi = (year: number, month: number) => {
 export const getPieChartsDataApi = () => {
   const config = getAxiosConfig()
   return axios.get(`${END_POINTS.GET_PIE_CHART_DATA}`, config)
+}
+
+export const updateStatusOrderApi = (orderId: string, statusOrder: string) => {
+  const config = getAxiosConfig()
+  return axios.put(
+    `${END_POINTS.UPDATE_STATUS_ORDER}?orderId=${orderId}&statusOrder=${statusOrder}`,
+    config
+  )
 }
