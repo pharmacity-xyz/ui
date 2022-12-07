@@ -27,7 +27,6 @@ const Order = () => {
       const res = await getOrderDetailApi(orderId)
       setOrderDetail(res.data)
       setIsOpen(true)
-      console.log(res)
     } catch (error) {
       console.error(error)
     }
@@ -54,9 +53,12 @@ const Order = () => {
                   />
                 )}
               </div>
-              <div className="w-3/6">
+              <div className="w-2/6">
                 <h1 className="mb-4">{order.product}</h1>
                 <h1>$ {order.totalPrice}</h1>
+              </div>
+              <div className="w-1/6 flex justify-center items-center">
+                <h1 className="mb-4">{order.statusOrder}</h1>
               </div>
               <div className="w-1/6 flex items-center justify-center">
                 <button

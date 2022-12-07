@@ -6,6 +6,7 @@ export interface IReturnOrders {
   totalPrice: number
   product: string
   productImageUrl: string
+  statusOrder: string
 }
 
 export type IOrderDetail = {
