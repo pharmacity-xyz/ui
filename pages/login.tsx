@@ -45,7 +45,12 @@ const Login = () => {
         )}
         <div className="flex justify-center items-center flex-wrap g-6">
           <div className="w-1/2 border p-3">
-            <form>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                login(emailAddress, password)
+              }}
+            >
               <div className="mb-6">
                 <input
                   type="text"
@@ -75,9 +80,8 @@ const Login = () => {
 
               <div className="text-center">
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                  onClick={() => login(emailAddress, password)}
                 >
                   SIGN IN
                 </button>
