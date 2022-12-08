@@ -66,7 +66,6 @@ const Cart = () => {
     try {
       await updateQuantityApi({ ...cart, quantity: cart.quantity - 1 })
       await fetchCarts()
-      // toast.success('Successfully added')
     } catch (error) {
       toast.error('Something went wrong')
     }
@@ -99,41 +98,46 @@ const Cart = () => {
             <Spinner />
           ) : (
             <>
-              {carts.length === 0 && (
+              {carts.length === 0 ? (
                 <h1 className="py-4 text-2xl text-center">
                   Your cart is empty.
                 </h1>
-              )}
-              {carts.map((cart) => (
-                <div className="flex border-b-2 py-4" key={cart.productId}>
-                  <div className="w-2/6">
-                    {cart.imageUrl && (
-                      <Image
-                        src={cart.imageUrl}
-                        alt={cart.productName}
-                        width={100}
-                        height={100}
-                      />
-                    )}
-                  </div>
-                  <div className="w-3/6 items-center justify-end">
-                    <h1 className="mb-4">{cart.productName}</h1>
-                    <div className="flex justify-evenly">
-                      <Counter
-                        cart={cart}
-                        handleDecrementItem={handleDecrementItem}
-                        handleIncrementItem={handleIncrementItem}
-                      />
-                      <button onClick={() => deleteCartProduct(cart.productId)}>
-                        <BsTrashFill className="text-2xl text-red-600" />
-                      </button>
+              ) : (
+                <>
+                  {carts.map((cart) => (
+                    <div className="flex border-b-2 py-4" key={cart.productId}>
+                      <div className="w-2/6">
+                        {cart.imageUrl && (
+                          <Image
+                            src={cart.imageUrl}
+                            alt={cart.productName}
+                            width={100}
+                            height={100}
+                          />
+                        )}
+                      </div>
+                      <div className="w-3/6 items-center justify-end">
+                        <h1 className="mb-4">{cart.productName}</h1>
+                        <div className="flex justify-evenly">
+                          <Counter
+                            cart={cart}
+                            handleDecrementItem={handleDecrementItem}
+                            handleIncrementItem={handleIncrementItem}
+                          />
+                          <button
+                            onClick={() => deleteCartProduct(cart.productId)}
+                          >
+                            <BsTrashFill className="text-2xl text-red-600" />
+                          </button>
+                        </div>
+                      </div>
+                      <div className="w-1/6 flex items-center justify-end">
+                        <h1>$ {cart.quantity * cart.price}</h1>
+                      </div>
                     </div>
-                  </div>
-                  <div className="w-1/6 flex items-center justify-end">
-                    <h1>$ {cart.quantity * cart.price}</h1>
-                  </div>
-                </div>
-              ))}
+                  ))}
+                </>
+              )}
             </>
           )}
           <h1 className="text-right">
