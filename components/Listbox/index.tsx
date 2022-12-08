@@ -49,7 +49,6 @@ const ListboxComponent = ({
                 />
               </span>
             </Listbox.Button>
-
             <Transition
               show={open}
               as={Fragment}
@@ -81,7 +80,6 @@ const ListboxComponent = ({
                             {option.name}
                           </span>
                         </div>
-
                         {selected ? (
                           <span
                             className={classNames(
