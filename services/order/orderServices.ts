@@ -42,6 +42,7 @@ export const updateStatusOrderApi = (orderId: string, statusOrder: string) => {
   const config = getAxiosConfig()
   return axios.put(
     `${END_POINTS.UPDATE_STATUS_ORDER}?orderId=${orderId}&statusOrder=${statusOrder}`,
+    {},
     config
   )
 }

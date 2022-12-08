@@ -15,7 +15,6 @@ const OrderManagement = () => {
   const fetchAllOrders = async () => {
     try {
       const res = await getOrdersForAdminApi()
-      console.log(res)
       setOrders(res.data)
     } catch (error) {
       toast.error('Something went wrong')
@@ -26,9 +25,9 @@ const OrderManagement = () => {
   const handleUpdateStatusOrder = async (orderId: string) => {
     try {
       const res = await updateStatusOrderApi(orderId, 'SHIPPED')
-      console.log(res.data)
+      // console.log(res.data)
       // setOrders(res.data)
-      // fetchAllOrders()
+      fetchAllOrders()
     } catch (error) {
       toast.error('Something went wrong')
       console.error(error)
@@ -81,10 +80,6 @@ const OrderManagement = () => {
                               scope="col"
                               className="text-white rounded-tr-lg text-sm font-medium px-6 py-4"
                             ></th>
-                            <th
-                              scope="col"
-                              className="text-white rounded-tr-lg text-sm font-medium px-6 py-4"
-                            ></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -123,7 +118,7 @@ const OrderManagement = () => {
                                   {order.statusOrder}
                                 </th>
                                 <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  {order.statusOrder !== 'SHIPPED' ? (
+                                  {order.statusOrder === 'PAID' ? (
                                     <button
                                       className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
                                       onClick={() =>
@@ -135,11 +130,6 @@ const OrderManagement = () => {
                                   ) : (
                                     <div></div>
                                   )}
-                                </td>
-                                <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                                  <button className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out">
-                                    CANCEL
-                                  </button>
                                 </td>
                               </tr>
                             ))}

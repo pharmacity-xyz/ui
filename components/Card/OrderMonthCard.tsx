@@ -20,7 +20,7 @@ const OrderMonthCard = ({
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={(e) => fetchChartData(year, parseInt(e.target.value))}
           >
-            <option selected>Choose month</option>
+            <option value={0}>Choose month</option>
             {labels.map((label, index) => (
               <option value={label.value} key={index}>
                 {label.label}
