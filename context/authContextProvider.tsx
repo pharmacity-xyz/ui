@@ -73,8 +73,11 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.removeItem('userId')
     localStorage.removeItem('token')
 
+    if (router.pathname === '/') {
+      window.location.reload()
+    }
+
     router.push('/')
-    // window.location.reload()
     toast.success('Signed Out')
   }
 
