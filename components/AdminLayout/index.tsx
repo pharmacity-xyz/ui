@@ -151,7 +151,7 @@ const AdminLayout = ({ children, title = 'Medical Equipment' }: Props) => (
           </ul>
         </div>
       </div>
-      <div className="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
+      <div className="container mx-auto py-10 md:w-4/5 w-11/12 px-6 bg-slate-400 overflow-scroll">
         {children}
       </div>
     </div>

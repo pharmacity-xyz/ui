@@ -28,6 +28,12 @@ const data = {
 }
 
 const options = {
+  // responsive: true,
+  // maintainAspectRatio: false,
+  // aspectRatio: 1,
+  layout: {
+    padding: 0,
+  },
   elements: {
     arc: {
       weight: 0.5,
@@ -73,12 +79,19 @@ function DoughnutChartCard() {
   }, [])
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-slate-200">
-      <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Orders by category</h2>
-      </header>
+    <div className='w-full flex justify-center'>
+      <div className="w-3/5 flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-slate-200">
+        <header className="px-5 py-4 border-b border-slate-100">
+          <h2 className="font-semibold text-slate-800">Orders by category</h2>
+        </header>
 
-      <Doughnut data={doughnutChart} width={50} height={50} options={options} />
+        <Doughnut
+          data={doughnutChart}
+          options={options}
+          width={50}
+          height={50}
+        />
+      </div>
     </div>
   )
 }
