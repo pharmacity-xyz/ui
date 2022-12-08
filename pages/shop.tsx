@@ -98,8 +98,7 @@ const Shop = () => {
 
   const sortByLowToHigh = async () => {
     setLoading(true)
-    const res = await getAllProductsApi()
-    let sortedProducts: Array<IReturnProducts> = res.data.sort(
+    let sortedProducts: Array<IReturnProducts> = [...products].sort(
       (a, b) => a.price - b.price
     )
     setProducts(sortedProducts)
@@ -107,11 +106,12 @@ const Shop = () => {
   }
 
   const sortByHighToLow = async () => {
-    const res = await getAllProductsApi()
-    let sortedProducts: Array<IReturnProducts> = res.data.sort(
+    setLoading(true)
+    let sortedProducts: Array<IReturnProducts> = [...products].sort(
       (a, b) => b.price - a.price
     )
     setProducts(sortedProducts)
+    setLoading(false)
   }
 
   useEffect(() => {
