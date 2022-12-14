@@ -152,9 +152,9 @@ const Cart = () => {
             >
               Proceed to checkout
             </button>
-            <button className="bg-red-400 p-2 rounded-md w-full" disabled>
+            {/* <button className="bg-red-400 p-2 rounded-md w-full" disabled>
               Clear cart
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
