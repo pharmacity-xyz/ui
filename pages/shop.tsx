@@ -47,7 +47,7 @@ const Shop = () => {
         fetchAllProducts()
       } else {
         const res = await searchProductsApi(searchWord)
-        setProducts(res.data.products)
+        setProducts(res.data)
       }
       setLoading(false)
     } catch (error) {
@@ -59,6 +59,7 @@ const Shop = () => {
     try {
       setLoading(true)
       const res = await getProductsByCategoryApi(categoryId)
+      console.log(res.data);
       setProducts(res.data)
       setLoading(false)
     } catch (error) {
@@ -142,23 +143,23 @@ const Shop = () => {
                       <Link
                         href={{
                           pathname: '/product/[id]',
-                          query: { id: product.productId },
+                          query: { id: product.product_id },
                         }}
-                        key={product.productId}
+                        key={product.product_id}
                       >
                         <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col cursor-pointer">
                           <>
-                            {product.imageUrl && (
+                            {product.image_url && (
                               <Image
-                                src={product.imageUrl}
-                                alt={product.productName}
+                                src={product.image_url}
+                                alt={product.product_name}
                                 width={300}
                                 height={300}
                               />
                             )}
                             <div className="pt-3 flex items-center justify-between">
                               <p className="w-full text-ellipsis whitespace-nowrap overflow-hidden">
-                                {product.productName}
+                                {product.product_name}
                               </p>
                             </div>
                             <p className="pt-1 text-gray-900">

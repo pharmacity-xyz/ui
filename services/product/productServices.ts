@@ -5,7 +5,7 @@ import { IAddProductAPI } from './types'
 const END_POINTS = {
   ADD: '/product',
   GET_ALL: '/product',
-  GET_BY_ID: '/product',
+  GET_BY_ID: '/product/product',
   GET_BY_CATEGORYID: '/product/category',
   SEARCH: '/product/search',
   FEATURED: '/product/featured',
@@ -23,15 +23,15 @@ export const getAllProductsApi = () => {
 }
 
 export const getProductByIdApi = (productId: string) => {
-  return axios.get(`${END_POINTS.GET_BY_ID}/${productId}`)
+  return axios.get(`${END_POINTS.GET_BY_ID}?id=${productId}`)
 }
 
 export const getProductsByCategoryApi = (categoryId: string) => {
-  return axios.get(`${END_POINTS.GET_BY_CATEGORYID}/${categoryId}`)
+  return axios.get(`${END_POINTS.GET_BY_CATEGORYID}?id=${categoryId}`)
 }
 
 export const searchProductsApi = (searchWord: string) => {
-  return axios.get(`${END_POINTS.SEARCH}/${searchWord}/1`)
+  return axios.get(`${END_POINTS.SEARCH}?word=${searchWord}`)
 }
 
 export const getFeaturedProducts = () => {

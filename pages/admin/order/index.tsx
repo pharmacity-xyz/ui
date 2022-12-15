@@ -25,8 +25,6 @@ const OrderManagement = () => {
   const handleUpdateStatusOrder = async (orderId: string) => {
     try {
       const res = await updateStatusOrderApi(orderId, 'SHIPPED')
-      // console.log(res.data)
-      // setOrders(res.data)
       fetchAllOrders()
     } catch (error) {
       toast.error('Something went wrong')

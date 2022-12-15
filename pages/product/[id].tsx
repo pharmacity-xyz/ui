@@ -18,6 +18,7 @@ const ProductDetail: React.FC<Props> = () => {
   const fetchProduct = async (productId: string) => {
     try {
       const res = await getProductByIdApi(productId)
+      console.log(res.data)
       setProduct(res.data)
     } catch (error) {
       console.log(error)
@@ -68,10 +69,10 @@ const ProductDetail: React.FC<Props> = () => {
                   <tbody className="text-center">
                     <tr className="border-b">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">
-                        {product.productId}
+                        {product.product_id}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {product.productName}
+                        {product.product_name}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         $ {product.price}

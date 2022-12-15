@@ -84,9 +84,9 @@ const ShopLayout = ({
           <div className="gap-4">
             {categories.map((category) => (
               <button
-                key={category.categoryId}
+                key={category.category_id}
                 className="mx-3 px-3 h-8 rounded-md border-black text-white"
-                onClick={() => searchProductsByCategory(category.categoryId)}
+                onClick={() => searchProductsByCategory(category.category_id)}
               >
                 {category.name}
               </button>

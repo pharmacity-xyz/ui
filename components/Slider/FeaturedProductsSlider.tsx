@@ -31,7 +31,6 @@ export const FeaturedProductsSlider = (props) => {
   const fetchFeaturedProducts = async () => {
     try {
       const res = await getFeaturedProducts()
-      console.log(res.data)
       setFeaturedProducts(res.data)
     } catch (error) {
       console.error(error)

@@ -3,12 +3,12 @@ export interface IAddCategoryApi {
 }
 
 export interface IReturnGetCategories {
-  categoryId: string
+  category_id: string
   name: string
 }
 
 
 export interface IUpdateCategory{
-  categoryId: string
+  category_id: string
   name: string
 }

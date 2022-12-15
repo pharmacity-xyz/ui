@@ -20,7 +20,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         return
       }
       await addCartApi({
-        productId: product.productId,
+        productId: product.product_id,
         userId: user!.userId,
         quantity: 1,
       })
@@ -35,10 +35,10 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
       <div className="pt-6">
         <div className="mx-auto mt-6 max-w-2xl">
           <div className="rounded-lg flex justify-center">
-            {product.imageUrl && (
+            {product.image_url && (
               <Image
-                src={product.imageUrl}
-                alt={product.productName}
+                src={product.image_url}
+                alt={product.product_name}
                 className="object-cover object-center"
                 width={300}
                 height={300}
@@ -49,7 +49,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-              {product.productName}
+              {product.product_name}
             </h1>
           </div>
 
@@ -156,7 +156,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
 
               <div className="space-y-6">
                 <p className="text-base text-gray-900">
-                  {product.productDescription}
+                  {product.product_description}
                 </p>
               </div>
             </div>

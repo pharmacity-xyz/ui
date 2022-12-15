@@ -12,13 +12,8 @@ export const AUTH_ACTION = {
   CLOSE_MODAL: 'CLOSE_MODAL',
 }
 
-interface IUserData {
-  userId: string
-  token: string
-}
-
 interface IAuthContext {
-  user: IUserData | null
+  token: string | null
   loginError: boolean
   login: (emailAddress: string, pass: string) => Promise<void>
   register: (req: ISignUpApiData) => Promise<void>
@@ -29,7 +24,7 @@ const AuthContext = React.createContext<IAuthContext | null>(null)
 
 export const AuthContextProvider = ({ children }) => {
   const [loginError, setLoginError] = useState(false)
-  const [user, setUser] = useState<IUserData | null>(null)
+  const [token, setToken] = useState<string | null>(null)
   const router = useRouter()
 
   const register = async (req: ISignUpApiData) => {
@@ -55,10 +50,11 @@ export const AuthContextProvider = ({ children }) => {
         password: pass,
       })
 
-      setUser(res.data)
+      console.log()
 
-      localStorage.setItem('userId', res.data.userId)
-      localStorage.setItem('token', res.data.token)
+      setToken(res.data)
+
+      localStorage.setItem('token', res.data)
 
       router.push('/')
       setLoginError(false)
@@ -68,9 +64,8 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
-    setUser(null)
+    setToken(null)
 
-    localStorage.removeItem('userId')
     localStorage.removeItem('token')
 
     if (router.pathname === '/') {
@@ -82,7 +77,9 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ login, register, logout, user, loginError }}>
+    <AuthContext.Provider
+      value={{ login, register, logout, token, loginError }}
+    >
       {children}
     </AuthContext.Provider>
   )

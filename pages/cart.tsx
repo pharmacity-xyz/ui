@@ -78,7 +78,6 @@ const Cart = () => {
 
       // @ts-ignore
       window.open(res as string)
-      console.log(res)
     } catch (error) {
       console.error(error)
     }
