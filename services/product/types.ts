@@ -1,29 +1,29 @@
 export interface IAddProductAPI {
-  productName: string
-  productDescription: string
-  imageUrl: string
+  product_name: string
+  product_description: string
+  image_url: string
   stock: number
   price: number
-  categoryId: string
+  category_id: string
 }
 
 export interface IReturnProducts {
-  productId: string
-  productName: string
-  productDescription: string
-  imageUrl: string
+  product_id: string
+  product_name: string
+  product_description: string
+  image_url: string
   images: Array<string>
   stock: number
   price: number
   featured: boolean
   category: Object
-  categoryId: string
+  category_id: string
 }
 
 export type IOrderDetailProducts = {
-  productId: string
-  productName: string
-  imageUrl: string
+  product_id: string
+  product_name: string
+  image_url: string
   quantity: number
-  totalPrice: number
+  total_price: number
 }

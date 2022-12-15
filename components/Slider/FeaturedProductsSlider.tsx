@@ -31,6 +31,7 @@ export const FeaturedProductsSlider = (props) => {
   const fetchFeaturedProducts = async () => {
     try {
       const res = await getFeaturedProducts()
+      console.log(res.data)
       setFeaturedProducts(res.data)
     } catch (error) {
       console.error(error)
@@ -49,22 +50,22 @@ export const FeaturedProductsSlider = (props) => {
             <Link
               href={{
                 pathname: '/product/[id]',
-                query: { id: product.productId },
+                query: { id: product.product_id },
               }}
-              key={product.productId}
+              key={product.product_id}
             >
               <div className="cursor-pointer hover:scale-100 transform border p-2 mx-2">
-                {product.imageUrl && (
+                {product.image_url && (
                   <Image
-                    src={product.imageUrl}
-                    alt={product.productName}
+                    src={product.image_url}
+                    alt={product.product_name}
                     className=""
                     width={200}
                     height={200}
                   />
                 )}
                 <h2 className="text-ellipsis whitespace-nowrap overflow-hidden">
-                  {product.productName}
+                  {product.product_name}
                 </h2>
                 <p>$ {product.price}</p>
               </div>
