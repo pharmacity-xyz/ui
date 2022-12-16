@@ -33,7 +33,6 @@ export const AuthContextProvider = ({ children }) => {
         toast.error('Password and Confirm Passowrd does not match')
         return
       }
-
       await signUpApi(req)
       router.push('/login')
       toast.success('Successfully created')

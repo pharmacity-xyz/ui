@@ -72,21 +72,21 @@ const OrderDetailModal = ({
               <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"></dd>
             </div>
             {orderDetail.products.map((product) => (
-              <div className="flex border-b-2 py-4" key={product.productId}>
+              <div className="flex border-b-2 py-4" key={product.product_id}>
                 <div className="w-1/6  text-center">
-                  {product.imageUrl && (
+                  {product.image_url && (
                     <Image
-                      src={product.imageUrl}
-                      alt={product.productName}
+                      src={product.image_url}
+                      alt={product.product_name}
                       width={50}
                       height={50}
                     />
                   )}
                 </div>
                 <div className="w-5/6">
-                  <h1 className="">{product.productName}</h1>
+                  <h1 className="">{product.product_name}</h1>
                   <h1>Quantity: {product.quantity}</h1>
-                  <h1>Total Price: $ {product.totalPrice}</h1>
+                  <h1>Total Price: $ {product.total_price}</h1>
                 </div>
               </div>
             ))}
