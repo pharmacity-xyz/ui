@@ -27,12 +27,16 @@ const CategoryManagement = () => {
     updatedName: string
   ) => {
     try {
-      if (updatedName === "") {
-        toast.error("Please enter category name")
+      if (updatedName === '') {
+        toast.error('Please enter category name')
         return
       }
-      const res = await updateCategoryApi({ categoryId, name: updatedName })
-      setCategories(res.data)
+      const res = await updateCategoryApi({
+        category_id: categoryId,
+        name: updatedName,
+      })
+      // setCategories()
+      await fetchAllCategories()
       toast('Updated!')
     } catch (error) {
       console.log(error)
@@ -97,12 +101,12 @@ const CategoryManagement = () => {
                         </thead>
                         <tbody>
                           {categories.map((category) => (
-                            <tr className="border-b" key={category.categoryId}>
+                            <tr className="border-b" key={category.category_id}>
                               <th
                                 className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                 scope="row"
                               >
-                                {category.categoryId}
+                                {category.category_id}
                               </th>
                               <th
                                 className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
@@ -120,7 +124,7 @@ const CategoryManagement = () => {
                                   className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out"
                                   onClick={() =>
                                     handleEditCategory(
-                                      category.categoryId,
+                                      category.category_id,
                                       category.name
                                     )
                                   }
@@ -132,7 +136,7 @@ const CategoryManagement = () => {
                                 <button
                                   className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
                                   onClick={() =>
-                                    handleDeleteCategory(category.categoryId)
+                                    handleDeleteCategory(category.category_id)
                                   }
                                 >
                                   Delete

@@ -18,15 +18,15 @@ const EditProduct = () => {
 
   const handleUpdateProduct = async () => {
     try {
-      if (product.productName === '') {
+      if (product.product_name === '') {
         toast.error('Please enter product name')
         return
       }
-      if (product.productDescription === '') {
+      if (product.product_description === '') {
         toast.error('Please enter product description')
         return
       }
-      if (product.imageUrl === '') {
+      if (product.image_url === '') {
         toast.error('Please enter image url')
         return
       }
@@ -81,9 +81,9 @@ const EditProduct = () => {
               id="floating_email"
               className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               required
-              defaultValue={product.productName}
+              defaultValue={product.product_name}
               onChange={(e) =>
-                setProduct({ ...product, productName: e.target.value })
+                setProduct({ ...product, product_name: e.target.value })
               }
             />
             <label
@@ -99,12 +99,12 @@ const EditProduct = () => {
               rows={10}
               id="floating_email"
               className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              defaultValue={product.productDescription}
+              defaultValue={product.product_description}
               required
               onChange={(e) =>
                 setProduct({
                   ...product,
-                  productDescription: e.target.value,
+                  product_description: e.target.value,
                 })
               }
             />
@@ -121,12 +121,12 @@ const EditProduct = () => {
               name="floating_email"
               id="floating_email"
               className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              defaultValue={product.imageUrl}
+              defaultValue={product.image_url}
               required
               onChange={(e) =>
                 setProduct({
                   ...product,
-                  imageUrl: e.target.value,
+                  image_url: e.target.value,
                 })
               }
             />
@@ -236,16 +236,16 @@ const EditProduct = () => {
             <select
               id="categories"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              defaultValue={product.categoryId}
+              defaultValue={product.category_id}
               onChange={(e) =>
                 setProduct({
                   ...product,
-                  categoryId: e.target.value,
+                  category_id: e.target.value,
                 })
               }
             >
               {categories.map((category) => (
-                <option value={category.categoryId} key={category.categoryId}>
+                <option value={category.category_id} key={category.category_id}>
                   {category.name}
                 </option>
               ))}

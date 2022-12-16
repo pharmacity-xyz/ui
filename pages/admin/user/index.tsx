@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import AdminLayout from 'components/AdminLayout'
 import { IReturnUser } from 'services/user/types'
 import { getAllUsersApi } from 'services/user/userServices'
-import { getAxiosConfig } from 'utils/config'
 
 const UserManagement = () => {
   const [users, setUsers] = useState<Array<IReturnUser>>([])
@@ -63,12 +62,12 @@ const UserManagement = () => {
                         </thead>
                         <tbody>
                           {users.map((user) => (
-                            <tr className="border-b" key={user.userId}>
+                            <tr className="border-b" key={user.user_id}>
                               <th
                                 className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                 scope="row"
                               >
-                                {user.firstName} {user.lastName}
+                                {user.first_name} {user.last_name}
                               </th>
                               <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
                                 {user.email}
@@ -77,7 +76,7 @@ const UserManagement = () => {
                                 {user.country}
                               </td>
                               <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                                {user.companyName}
+                                {user.company_name}
                               </td>
                             </tr>
                           ))}

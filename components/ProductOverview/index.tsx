@@ -10,11 +10,11 @@ import { IReturnProducts } from 'services/product/types'
 const ProductOverview = ({ product }: { product: IReturnProducts }) => {
   const router = useRouter()
 
-  const { user } = useAuth()
+  const { token } = useAuth()
 
   const handleAddCart = async () => {
     try {
-      if (user === null) {
+      if (token === null) {
         router.push('/login')
         toast('Please Sign In')
         return

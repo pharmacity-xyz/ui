@@ -1,13 +1,13 @@
 export interface IReturnUser {
-  userId: string
+  user_id: string
   email: string
   passwordHash: string
   passwordSalt: string
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   city: string
   country: string
-  companyName: string
+  company_name: string
   role: string
   orders: Object
 }

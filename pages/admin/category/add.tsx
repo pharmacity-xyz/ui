@@ -11,11 +11,11 @@ const AddCategory = () => {
 
   const handleAddCategory = async () => {
     try {
-      if (name === "") {
-        toast.error("Please enter category name")
+      if (name === '') {
+        toast.error('Please enter category name')
         return
       }
-      await addCategoryApi({ categoryName: name })
+      await addCategoryApi({ name })
       router.push('/admin/category')
     } catch (error) {
       console.error(error)

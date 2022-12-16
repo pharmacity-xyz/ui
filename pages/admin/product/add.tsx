@@ -10,9 +10,9 @@ import { toast } from 'react-toastify'
 
 const AddProduct = () => {
   const [newProduct, setNewProduct] = useState({
-    productName: '',
-    productDescription: '',
-    imageUrl: '',
+    product_name: '',
+    product_description: '',
+    image_url: '',
     stock: 0,
     price: 0,
   } as IAddProductAPI)
@@ -30,15 +30,15 @@ const AddProduct = () => {
 
   const handleAddProduct = async () => {
     try {
-      if (newProduct.productName === '') {
+      if (newProduct.product_name === '') {
         toast.error('Please enter product name')
         return
       }
-      if (newProduct.productDescription === '') {
+      if (newProduct.product_description === '') {
         toast.error('Please enter product description')
         return
       }
-      if (newProduct.imageUrl === '') {
+      if (newProduct.image_url === '') {
         toast.error('Please enter image url')
         return
       }
@@ -75,7 +75,7 @@ const AddProduct = () => {
               placeholder=" "
               required
               onChange={(e) =>
-                setNewProduct({ ...newProduct, productName: e.target.value })
+                setNewProduct({ ...newProduct, product_name: e.target.value })
               }
             />
             <label
@@ -96,7 +96,7 @@ const AddProduct = () => {
               onChange={(e) =>
                 setNewProduct({
                   ...newProduct,
-                  productDescription: e.target.value,
+                  product_description: e.target.value,
                 })
               }
             />
@@ -118,7 +118,7 @@ const AddProduct = () => {
               onChange={(e) =>
                 setNewProduct({
                   ...newProduct,
-                  imageUrl: e.target.value,
+                  image_url: e.target.value,
                 })
               }
             />
@@ -188,13 +188,13 @@ const AddProduct = () => {
               onChange={(e) =>
                 setNewProduct({
                   ...newProduct,
-                  categoryId: e.target.value,
+                  category_id: e.target.value,
                 })
               }
             >
               <option selected>Choose a category</option>
               {categories.map((category) => (
-                <option value={category.categoryId} key={category.categoryId}>
+                <option value={category.category_id} key={category.category_id}>
                   {category.name}
                 </option>
               ))}

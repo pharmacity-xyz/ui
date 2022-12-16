@@ -24,7 +24,10 @@ const ProductManagement = () => {
 
   const handleEditProduct = async (categoryId: string, updatedName: string) => {
     try {
-      const res = await updateCategoryApi({ categoryId, name: updatedName })
+      const res = await updateCategoryApi({
+        category_id: categoryId,
+        name: updatedName,
+      })
       setProducts(res.data)
       toast('Updated!')
     } catch (error) {
@@ -102,15 +105,15 @@ const ProductManagement = () => {
                         </thead>
                         <tbody>
                           {products.map((product) => (
-                            <tr className="border-b" key={product.productId}>
+                            <tr className="border-b" key={product.product_id}>
                               <th
                                 className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left"
                                 scope="row"
                               >
                                 <input
-                                  defaultValue={product.productName}
+                                  defaultValue={product.product_name}
                                   onChange={(e) => {
-                                    product.productName = e.target.value
+                                    product.product_name = e.target.value
                                   }}
                                 />
                               </th>
@@ -140,9 +143,9 @@ const ProductManagement = () => {
                                 <Link
                                   href={{
                                     pathname: '/admin/product/edit/[id]',
-                                    query: { id: product.productId },
+                                    query: { id: product.product_id },
                                   }}
-                                  key={product.productId}
+                                  key={product.product_id}
                                 >
                                   <a className="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">
                                     Edit
@@ -153,7 +156,7 @@ const ProductManagement = () => {
                                 <button
                                   className="font-medium text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 transition duration-300 ease-in-out"
                                   onClick={() =>
-                                    handleDeleteProduct(product.productId)
+                                    handleDeleteProduct(product.product_id)
                                   }
                                 >
                                   Delete

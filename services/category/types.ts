@@ -1,5 +1,5 @@
 export interface IAddCategoryApi {
-  categoryName: string
+  name: string
 }
 
 export interface IReturnGetCategories {
@@ -7,8 +7,7 @@ export interface IReturnGetCategories {
   name: string
 }
 
-
-export interface IUpdateCategory{
+export interface IUpdateCategory {
   category_id: string
   name: string
 }
