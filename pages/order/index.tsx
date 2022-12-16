@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 import Layout from 'components/Layout'
@@ -9,7 +8,6 @@ import { IReturnOrders } from 'services/order/types'
 
 const Order = () => {
   const [orders, setOrders] = useState<Array<IReturnOrders>>([])
-  const router = useRouter()
 
   const { setIsOpen, setOrderDetail } = useModal()
 

@@ -189,13 +189,6 @@ const Account: NextPage = () => {
         </form>
       </div>
       <div className="grid grid-cols-3 gap-3">
-        {/* {teams.map((person) => (
-            <div key={person.id} className="w-full px-10 py-5 text-center">
-              <span className=""></span>
-              <Image src={person.image} alt="" width={200} height={200} />
-              <h3 className="text-black font-sm text-lg mb-2">{person.name}</h3>
-            </div>
-          ))} */}
       </div>
     </Layout>
   )

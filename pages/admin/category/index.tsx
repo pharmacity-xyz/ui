@@ -35,7 +35,6 @@ const CategoryManagement = () => {
         category_id: categoryId,
         name: updatedName,
       })
-      // setCategories()
       await fetchAllCategories()
       toast('Updated!')
     } catch (error) {
