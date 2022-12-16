@@ -20,8 +20,7 @@ const ProductOverview = ({ product }: { product: IReturnProducts }) => {
         return
       }
       await addCartApi({
-        productId: product.product_id,
-        userId: user!.userId,
+        product_id: product.product_id,
         quantity: 1,
       })
       router.push('/cart')

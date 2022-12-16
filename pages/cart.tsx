@@ -66,7 +66,6 @@ const Cart = () => {
     try {
       await updateQuantityApi({ ...cart, quantity: cart.quantity - 1 })
       await fetchCarts()
-      // toast.success('Successfully added')
     } catch (error) {
       toast.error('Something went wrong')
     }
@@ -104,26 +103,28 @@ const Cart = () => {
                 </h1>
               )}
               {carts.map((cart) => (
-                <div className="flex border-b-2 py-4" key={cart.productId}>
+                <div className="flex border-b-2 py-4" key={cart.product_id}>
                   <div className="w-2/6">
-                    {cart.imageUrl && (
+                    {cart.image_url && (
                       <Image
-                        src={cart.imageUrl}
-                        alt={cart.productName}
+                        src={cart.image_url}
+                        alt={cart.product_name}
                         width={100}
                         height={100}
                       />
                     )}
                   </div>
                   <div className="w-3/6 items-center justify-end">
-                    <h1 className="mb-4">{cart.productName}</h1>
+                    <h1 className="mb-4">{cart.product_name}</h1>
                     <div className="flex justify-evenly">
                       <Counter
                         cart={cart}
                         handleDecrementItem={handleDecrementItem}
                         handleIncrementItem={handleIncrementItem}
                       />
-                      <button onClick={() => deleteCartProduct(cart.productId)}>
+                      <button
+                        onClick={() => deleteCartProduct(cart.product_id)}
+                      >
                         <BsTrashFill className="text-2xl text-red-600" />
                       </button>
                     </div>

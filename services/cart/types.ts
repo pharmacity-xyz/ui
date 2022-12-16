@@ -1,13 +1,12 @@
 export interface IAddCartApi {
-  userId: string
-  productId: string
+  product_id: string
   quantity: number
 }
 
 export interface IReturnCart {
-  productId: string
-  productName: string
-  imageUrl: string
+  product_id: string
+  product_name: string
+  image_url: string
   price: number
   quantity: number
 }
