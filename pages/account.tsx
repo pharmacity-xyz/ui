@@ -26,11 +26,11 @@ const Account: NextPage = () => {
         toast.error('Please enter Email')
         return
       }
-      if (user.firstName === '') {
+      if (user.first_name === '') {
         toast.error('Please enter First name')
         return
       }
-      if (user.lastName === '') {
+      if (user.last_name === '') {
         toast.error('Please enter Last name')
         return
       }
@@ -42,7 +42,7 @@ const Account: NextPage = () => {
         toast.error('Please enter Country')
         return
       }
-      if (user.companyName === '') {
+      if (user.company_name === '') {
         toast.error('Please enter Company name')
         return
       }
@@ -90,9 +90,9 @@ const Account: NextPage = () => {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
-                value={user.firstName}
+                value={user.first_name}
                 onChange={(e) =>
-                  setUser({ ...user, firstName: e.target.value })
+                  setUser({ ...user, first_name: e.target.value })
                 }
               />
               <label
@@ -110,8 +110,10 @@ const Account: NextPage = () => {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
-                value={user.lastName}
-                onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+                value={user.last_name}
+                onChange={(e) =>
+                  setUser({ ...user, last_name: e.target.value })
+                }
               />
               <label
                 htmlFor="floating_last_name"
@@ -165,9 +167,9 @@ const Account: NextPage = () => {
               className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
-              value={user.companyName}
+              value={user.company_name}
               onChange={(e) =>
-                setUser({ ...user, companyName: e.target.value })
+                setUser({ ...user, company_name: e.target.value })
               }
             />
             <label
