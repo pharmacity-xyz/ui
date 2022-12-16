@@ -10,15 +10,15 @@ const Register: NextPage = () => {
   const [requestForm, setRequestForm] = useState({
     email: '',
     password: '',
-    confirmPassword: '',
-    firstName: '',
-    lastName: '',
+    confirm_password: '',
+    first_name: '',
+    last_name: '',
     city: '',
     country: '',
-    companyName: '',
+    company_name: '',
   } as ISignUpApiData)
   const [error, setError] = useState({ validate: false, item: '' })
-  const { user, register } = useAuth()
+  const { register } = useAuth()
 
   const handleValidateForm = () => {
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -30,15 +30,15 @@ const Register: NextPage = () => {
       setError({ validate: true, item: 'password' })
       return
     }
-    if (requestForm.confirmPassword === '') {
+    if (requestForm.confirm_password === '') {
       setError({ validate: true, item: 'confirmPassword' })
       return
     }
-    if (requestForm.firstName === '') {
+    if (requestForm.first_name === '') {
       setError({ validate: true, item: 'firstName' })
       return
     }
-    if (requestForm.lastName === '') {
+    if (requestForm.last_name === '') {
       setError({ validate: true, item: 'lastName' })
       return
     }
@@ -50,7 +50,7 @@ const Register: NextPage = () => {
       setError({ validate: true, item: 'country' })
       return
     }
-    if (requestForm.companyName === '') {
+    if (requestForm.company_name === '') {
       setError({ validate: true, item: 'companyName' })
       return
     }
@@ -119,7 +119,7 @@ const Register: NextPage = () => {
                   onChange={(e) =>
                     setRequestForm({
                       ...requestForm,
-                      confirmPassword: e.target.value,
+                      confirm_password: e.target.value,
                     })
                   }
                 />
@@ -138,7 +138,7 @@ const Register: NextPage = () => {
                   onChange={(e) =>
                     setRequestForm({
                       ...requestForm,
-                      firstName: e.target.value,
+                      first_name: e.target.value,
                     })
                   }
                 />
@@ -158,7 +158,7 @@ const Register: NextPage = () => {
                   onChange={(e) =>
                     setRequestForm({
                       ...requestForm,
-                      lastName: e.target.value,
+                      last_name: e.target.value,
                     })
                   }
                 />
@@ -215,7 +215,7 @@ const Register: NextPage = () => {
                   onChange={(e) =>
                     setRequestForm({
                       ...requestForm,
-                      companyName: e.target.value,
+                      company_name: e.target.value,
                     })
                   }
                 />
